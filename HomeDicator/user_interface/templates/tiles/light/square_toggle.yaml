@@ -1,0 +1,39 @@
+# A toggle button for lights/switches.
+button:
+  id: tile_${esphome_id}
+  styles: info_or_button_tile
+  bg_color: 0x444444
+  
+  border_width: 0
+  shadow_width: 0
+  pad_all: 0
+  
+  layout:
+    type: FLEX
+    flex_flow: COLUMN
+    flex_align_main: CENTER
+    flex_align_cross: CENTER
+    flex_align_track: CENTER
+    pad_row: 0
+    
+  on_click:
+    then:
+      - homeassistant.action:
+          action: ${service}
+          data:
+            entity_id: ${hass_id}
+            
+  widgets:
+    - label:
+        id: icon_${esphome_id}
+        styles: info_or_button_tile_icon
+        text: "${icon_off}"
+        text_color: 0xFFFFFF
+        clickable: false 
+    - label:
+        id: title_${esphome_id}
+        styles: info_or_button_tile_subtitle
+        text: ${title}
+        pad_top: 10
+        text_font: libreFranklin10
+        clickable: false
