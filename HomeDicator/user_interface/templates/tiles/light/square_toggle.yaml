@@ -2,8 +2,7 @@
 button:
   id: tile_${esphome_id}
   styles: info_or_button_tile
-  bg_color: 0x444444
-  
+  bg_color: ${bg_color}
   border_width: 0
   shadow_width: 0
   pad_all: 0
@@ -28,12 +27,13 @@ button:
         id: icon_${esphome_id}
         styles: info_or_button_tile_icon
         text: "${icon_off}"
-        text_color: 0xFFFFFF
+        text_color: 0xffffff
         clickable: false 
     - label:
         id: title_${esphome_id}
         styles: info_or_button_tile_subtitle
         text: ${title}
+        text_color: 0xffffff
         pad_top: 10
         text_font: libreFranklin10
         clickable: false
