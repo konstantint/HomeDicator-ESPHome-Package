@@ -1,12 +1,14 @@
 id: settings
+skip: true
 bg_color: 0x0d0d0d
 bg_opa: COVER
 widgets:
-  # PAGE TITLE
   - !include
-      file: ../templates/page_title.yaml
+      file: ../templates/page_title_with_back_button.yaml
       vars:
         title: "Settings"
+        previous_page_id: "first_page"
+        previous_page_name: "Back"
   - obj:
       styles: content_container
       layout:
@@ -157,34 +159,3 @@ widgets:
                   height: 40
                   width: 85
                   bg_color: 0xdddddd
-        - obj:
-            width: 443
-            height: 80
-            radius: 15
-            bg_color: 0x202020
-            bg_opa: COVER
-            pad_all: 0
-            pad_left: 30
-            pad_right: 30
-            on_click:
-              then:
-                - script.execute: hide_page_control_elements
-                - lvgl.page.show:
-                    animation: MOVE_LEFT
-                    time: ${page_transition_time}
-                    id: about
-            layout:
-              type: FLEX
-              flex_flow: ROW
-              flex_align_main: SPACE_BETWEEN
-              flex_align_cross: CENTER
-              flex_align_track: CENTER
-            widgets:
-              - label:
-                  text_color: 0xffffff
-                  text_font: libreFranklin18
-                  text: "About this device"
-              - label:
-                  text_color: 0xffffff
-                  text_font: ui_light_icons
-                  text: "\U0000F142"

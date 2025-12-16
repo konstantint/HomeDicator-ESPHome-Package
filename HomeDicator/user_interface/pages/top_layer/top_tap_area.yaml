@@ -4,25 +4,12 @@ obj:
   y: 0
   pad_all: 0
   width: 480
-  height: SIZE_CONTENT
+  height: 70
   bg_opa: TRANSP
-  layout:
-    type: FLEX
-    flex_flow: ROW
-    flex_align_main: SPACE_BETWEEN
-    flex_align_cross: CENTER
-  widgets:
-    - obj:
-        bg_opa: TRANSP
-        height: 70
-        width: 235
-        on_press:
-          then:
-            - script.execute: previous_page
-    - obj:
-        bg_opa: TRANSP
-        height: 70
-        width: 235
-        on_press:
-          then:
-            - script.execute: next_page
+  on_press:
+    then:
+      - script.execute: hide_page_control_elements
+      - lvgl.page.show:
+          animation: MOVE_LEFT
+          time: ${page_transition_time}
+          id: settings
