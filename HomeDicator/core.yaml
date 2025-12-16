@@ -1,6 +1,7 @@
 ---    
 substitutions:
-    homedicator_core_version_tag: "v0.3.2"
+    homedicator_core_version_tag: "v0.3.2-kt"
+    homedicator_package_dir: "HomeDicator-ESPHome-Package"
     
 sensor:
   - !include core/config/common/sensors/wifi_signal.yaml

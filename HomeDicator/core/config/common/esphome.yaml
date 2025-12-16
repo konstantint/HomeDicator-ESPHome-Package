@@ -6,7 +6,7 @@ esphome:
     version: ${homedicator_core_version_tag}
 
   includes:
-    - HomeDicator/core/helpers/adjust_color.h
+    - ${homedicator_package_dir}/HomeDicator/core/helpers/adjust_color.h
 
   platformio_options:
     build_unflags: -Werror=all
