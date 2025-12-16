@@ -1,3 +1,6 @@
+substitutions:
+  first_page_id: first_page
+
 script:
   - id: update_time
     then:
@@ -28,6 +31,10 @@ script:
       - lvgl.widget.hide: left_tap_area
       - lvgl.widget.hide: right_tap_area
       - lvgl.widget.hide: bottom_pager
+      - globals.set:
+          id: page_controls_hidden
+          value: 'true'
+
 
   - id: show_page_control_elements
     then:
@@ -36,6 +43,9 @@ script:
       - lvgl.widget.show: left_tap_area
       - lvgl.widget.show: right_tap_area
       - lvgl.widget.show: bottom_pager
+      - globals.set:
+          id: page_controls_hidden
+          value: 'false'
 
   - id: create_pager_dots
     then:
@@ -51,6 +61,24 @@ script:
             id(pager_dots)[i] = dot;  // Store the dot reference
           }
 
+  - id: update_pager_dots
+    then:
+      - lambda: |-
+          for (int i = 0; i < ${total_pages}; i++) {
+            lv_obj_t* dot = id(pager_dots)[i];
+            lv_obj_set_style_bg_color(dot, (i == id(current_page)) ? lv_color_hex(0xffffff) : lv_color_hex(0x626262), LV_PART_MAIN);  // Active color is white, inactive is gray
+          }
+  
+  - id: go_to_first_page
+    then:
+      - globals.set:
+          id: current_page
+          value: '0'
+      - lvgl.page.show:
+          id: ${first_page_id}
+          animation: MOVE_LEFT
+      - script.execute: update_pager_dots
+ 
   - id: next_page
     then:
       - globals.set:
@@ -61,11 +89,7 @@ script:
       - lvgl.page.next:
           animation: MOVE_LEFT
           time: ${page_transition_time}
-      - lambda: |-
-          for (int i = 0; i < ${total_pages}; i++) {
-            lv_obj_t* dot = id(pager_dots)[i];
-            lv_obj_set_style_bg_color(dot, (i == id(current_page)) ? lv_color_hex(0xffffff) : lv_color_hex(0x626262), LV_PART_MAIN);  // Active color is white, inactive is gray
-          }
+      - script.execute: update_pager_dots
 
   - id: previous_page
     then:
@@ -77,11 +101,7 @@ script:
       - lvgl.page.previous:
           animation: MOVE_RIGHT
           time: ${page_transition_time}
-      - lambda: |-
-          for (int i = 0; i < ${total_pages}; i++) {
-            lv_obj_t* dot = id(pager_dots)[i];
-            lv_obj_set_style_bg_color(dot, (i == id(current_page)) ? lv_color_hex(0xffffff) : lv_color_hex(0x626262), LV_PART_MAIN);  // Active color is white, inactive is gray
-          }
+      - script.execute: update_pager_dots
 
   - id: activity_timeout_reached
     then:

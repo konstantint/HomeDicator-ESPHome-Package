@@ -29,12 +29,13 @@ lvgl:
     - !include user_interface/pages/about.yaml
 
 
-<<: !include core/config/common/fonts.yaml
-<<: !include core/config/common/esphome.yaml
-<<: !include core/config/common/scripts.yaml
-<<: !include core/config/common/light.yaml
-<<: !include core/config/common/time.yaml
-<<: !include core/config/common/select.yaml
-<<: !include core/config/common/globals.yaml
-<<: !include core/config/common/http_request.yaml
-<<: !include core/config/common/interval.yaml
+packages:
+  fonts: !include core/config/common/fonts.yaml
+  esphome: !include core/config/common/esphome.yaml
+  scripts: !include core/config/common/scripts.yaml
+  light: !include core/config/common/light.yaml
+  time: !include core/config/common/time.yaml
+  select: !include core/config/common/select.yaml
+  globals: !include core/config/common/globals.yaml
+  http_request: !include core/config/common/http_request.yaml
+  interval: !include core/config/common/interval.yaml

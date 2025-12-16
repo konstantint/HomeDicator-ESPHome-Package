@@ -9,6 +9,7 @@ widgets:
       vars:
         title: "About"
         previous_page_id: "settings"
+        previous_page_index: "0"
         previous_page_name: "Settings"
   - !include
       file: ../templates/left_tap_area_back.yaml

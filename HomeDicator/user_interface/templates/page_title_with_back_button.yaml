@@ -30,6 +30,10 @@ obj:
                 id: ${previous_page_id}
                 animation: MOVE_RIGHT
                 time: ${page_transition_time}
+            - globals.set:
+                id: current_page
+                value: ${previous_page_index}
+            - script.execute: update_pager_dots
         widgets:
           - obj:
               bg_opa: TRANSP

@@ -8,6 +8,7 @@ widgets:
       vars:
         title: "Settings"
         previous_page_id: "first_page"
+        previous_page_index: "0"
         previous_page_name: "Back"
   - obj:
       styles: content_container

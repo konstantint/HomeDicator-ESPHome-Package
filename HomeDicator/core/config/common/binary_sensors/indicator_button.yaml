@@ -16,5 +16,9 @@ on_press:
           # If screen is off, wake it up
           - script.execute: activity_detected
         else:
-          # If screen is on, switch to next page
-          - script.execute: next_page
+          # Otherise, move to next page
+          - if:
+              condition:  # Don't switch if we are on the settings screen.
+                lambda: return !id(page_controls_hidden);
+              then:
+                script.execute: next_page

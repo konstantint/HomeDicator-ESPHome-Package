@@ -10,6 +10,10 @@ globals:
     type: bool
     initial_value: "false"
     restore_value: no
+  - id: page_controls_hidden
+    type: bool
+    initial_value: "false"
+    restore_value: no
   - id: use_24h_clock
     type: bool
     initial_value: "true"
