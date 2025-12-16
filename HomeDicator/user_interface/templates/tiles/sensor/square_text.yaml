@@ -1,0 +1,50 @@
+# Same as square, but without units
+obj:
+  styles: info_or_button_tile
+  layout:
+    type: FLEX
+    flex_flow: COLUMN
+    flex_align_main: CENTER
+    flex_align_cross: CENTER
+    flex_align_track: CENTER
+    pad_row: 0
+  widgets:
+    # Icon Bubble
+    - obj:
+        bg_opa: COVER
+        bg_color: ${color}
+        pad_all: 0
+        height: 52
+        width: 100
+        radius: 25
+        layout:
+          type: FLEX
+          flex_flow: COLUMN
+          flex_align_main: CENTER
+          flex_align_cross: CENTER
+          flex_align_track: CENTER
+        widgets:
+          - label:
+              styles: info_or_button_tile_icon
+              text: ${icon}
+    # Value Label (No Unit)
+    - obj:
+        styles: info_or_button_tile_info
+        width: SIZE_CONTENT
+        layout:
+          type: FLEX
+          flex_flow: ROW
+          flex_align_main: CENTER
+          flex_align_cross: END
+          pad_row: 0
+        widgets:
+          - label:
+              id: lvgl_value_label_${hass_sensor_id}
+              text_font: libreFranklin32
+              text: "n/a"
+              text_align: CENTER
+    # Title
+    - label:
+        styles: info_or_button_tile_subtitle
+        text: ${title}
+        text_font: libreFranklin10
