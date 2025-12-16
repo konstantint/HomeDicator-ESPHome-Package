@@ -13,6 +13,8 @@ on_press:
     - if:
         condition: lvgl.is_paused
         then:
+          # If screen is off, wake it up
           - script.execute: activity_detected
         else:
-          - script.execute: activity_timeout_reached
+          # If screen is on, switch to next page
+          - script.execute: next_page
