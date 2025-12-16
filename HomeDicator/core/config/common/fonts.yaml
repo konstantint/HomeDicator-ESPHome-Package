@@ -244,6 +244,7 @@ font:
       "\U000F0588", # mdi:wan
       "\U000F072A", # mdi:washing-machine
       "\U000F0F91", # mdi:wardrobe-outline
+      "\U000F0595", # mdi:weather-partly-cloudy
       "\U000F111C", # mdi:window-shutter
       "\U000F111E", # mdi:window-shutter-open
     ]
@@ -301,6 +302,15 @@ font:
       family: Libre+Franklin
       weight: 600
     id: libreFranklin10
+    size: 14
+    bpp: 8
+    glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
+
+  - file:
+      type: gfonts
+      family: Libre+Franklin
+      weight: 400
+    id: libreFranklin10Light
     size: 14
     bpp: 8
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
