@@ -22,6 +22,8 @@ font:
       "\U000F12A2", # mdi:battery-medium
       "\U000F008E", # mdi:battery-outline
       "\U000F02E3", # mdi:bed
+      "\U000F0FD4", # mdi:bed-double
+      "\U000F0FD3", # mdi:bed-double-outline
       "\U000F0099", # mdi:bed-outline
       "\U000F0FD2", # mdi:bed-king
       "\U000F0FD1", # mdi:bed-king-outline

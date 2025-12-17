@@ -1,0 +1,25 @@
+platform: homeassistant
+id: sw_${hass_switch_id}
+entity_id: switch.${hass_switch_id}
+on_turn_on:
+  - lvgl.obj.update:
+      id: tile_sw_${hass_switch_id}
+      bg_color: "0xeebf41"
+  - lvgl.label.update:
+      id: icon_sw_${hass_switch_id}
+      text: ${icon_on}
+      text_color: "0x000000"
+  - lvgl.label.update:
+      id: title_sw_${hass_switch_id}
+      text_color: "0x000000"
+on_turn_off:
+  - lvgl.obj.update:
+      id: tile_sw_${hass_switch_id}
+      bg_color: "0x444444"
+  - lvgl.label.update:
+      id: icon_sw_${hass_switch_id}
+      text: ${icon_off}
+      text_color: "0xffffff"
+  - lvgl.label.update:
+      id: title_sw_${hass_switch_id}
+      text_color: "0xffffff"
