@@ -25,6 +25,7 @@ obj:
           flex_align_track: CENTER
         widgets:
           - label:
+              id: lvgl_icon_${hass_sensor_id}
               styles: info_or_button_tile_icon
               text: ${icon}
     # Value Label (No Unit)
