@@ -1,0 +1,11 @@
+# Version of sensor.yaml that allows passing a format string
+platform: homeassistant
+id: ${hass_sensor_id}
+entity_id: sensor.${hass_sensor_id}
+on_value:
+  - lvgl.label.update:
+      id: lvgl_value_label_${hass_sensor_id}
+      text: !lambda |-
+        char buffer[10];
+        snprintf(buffer, sizeof(buffer), "${format}", x);
+        return buffer;
