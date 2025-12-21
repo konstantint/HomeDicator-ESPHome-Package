@@ -7,7 +7,7 @@ widgets:
       file: ../templates/page_title_with_back_button.yaml
       vars:
         title: "Settings"
-        previous_page_id: "first_page"
+        previous_page_id: ${first_page_id}
         previous_page_index: "0"
         previous_page_name: "Back"
   - obj:
