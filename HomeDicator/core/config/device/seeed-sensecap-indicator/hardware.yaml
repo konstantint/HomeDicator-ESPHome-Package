@@ -111,3 +111,10 @@ wifi:
       - lvgl.label.update:
           id: lvgl_wifi_signal_icon
           text: "\U000F092E"
+
+uart:
+  - id: rp2040_uart
+    tx_pin: GPIO19
+    rx_pin: GPIO20
+    baud_rate: 921600 # Must match the RP2040 firmware
+    rx_buffer_size: 4096
