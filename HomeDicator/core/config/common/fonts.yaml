@@ -2,7 +2,8 @@ font:
   # ---------------
   # Icons for tiles
   # ---------------
-  - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: icons35
     size: 35
     bpp: 8
@@ -278,7 +279,8 @@ font:
   # ----------------------
   # User Interface Related
   # ----------------------
-  - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: icons24
     size: 24
     bpp: 8
@@ -291,7 +293,8 @@ font:
       "\U000F0928",  # mdi:wifi-strength-4
     ]
 
-  - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: brightness_small
     size: 20
     bpp: 8
@@ -299,7 +302,8 @@ font:
       "\U000F05A8",  # mdi:white-balance-sunny
     ]
 
-  - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+  - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: brightness_big
     size: 30
     bpp: 8
@@ -307,7 +311,8 @@ font:
       "\U000F05A8",  # mdi:white-balance-sunny
     ]
 
-  - file: "https://github.com/Templarian/MaterialDesignLight-Webfont/raw/master/fonts/materialdesignicons-light-webfont.ttf"
+  #- file: "https://github.com/Templarian/MaterialDesignLight-Webfont/raw/master/fonts/materialdesignicons-light-webfont.ttf"
+  - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-light-webfont.ttf"
     id: ui_light_icons
     size: 35
     bpp: 8
