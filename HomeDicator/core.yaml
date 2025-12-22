@@ -1,8 +1,8 @@
----    
+---
 substitutions:
-    homedicator_core_version_tag: "v0.3.2-kt"
-    homedicator_package_dir: "HomeDicator-ESPHome-Package"
-    
+  homedicator_core_version_tag: "v0.3.2-kt"
+  homedicator_package_dir: "HomeDicator-ESPHome-Package"
+
 sensor:
   - !include core/config/common/sensors/wifi_signal.yaml
   - !include core/config/common/sensors/wifi_signal_percent.yaml
@@ -28,7 +28,6 @@ lvgl:
     - !include user_interface/pages/settings.yaml
     - !include user_interface/pages/about.yaml
 
-
 packages:
   fonts: !include core/config/common/fonts.yaml
   esphome: !include core/config/common/esphome.yaml
@@ -37,5 +36,3 @@ packages:
   time: !include core/config/common/time.yaml
   select: !include core/config/common/select.yaml
   globals: !include core/config/common/globals.yaml
-  http_request: !include core/config/common/http_request.yaml
-  interval: !include core/config/common/interval.yaml
