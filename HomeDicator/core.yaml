@@ -36,3 +36,4 @@ packages:
   time: !include core/config/common/time.yaml
   select: !include core/config/common/select.yaml
   globals: !include core/config/common/globals.yaml
+  i18n: !include core/config/common/i18n.yaml

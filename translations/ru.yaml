@@ -1,0 +1,13 @@
+settings:
+  settings: "Настройки"
+  display_brightness: "Яркость экрана"
+  turn_off_screen_after: "Выключить экран после"
+  never: "Никогда"
+  minute1: "1 мин" 
+  minute5: "5 мин" 
+  minute15: "15 мин" 
+  use_24h_clock:  "24-часовой формат времени"
+  auto_cycle_through_screens: "Авто-листать страницы"
+
+back: "Назад"
+waiting_for_home_assistant: "Подключение к Home Assistant..."

@@ -1,0 +1,13 @@
+external_components:
+  - source:
+      type: local
+      path: ${homedicator_package_dir}/i18n_component/components
+    components: [i18n]
+
+i18n:
+  id: translate
+  sources:
+    - ${homedicator_package_dir}/translations/en.yaml
+    - ${homedicator_package_dir}/translations/ru.yaml
+  # Default locale (optional, default: "en")
+  default_locale: en

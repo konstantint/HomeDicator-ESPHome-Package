@@ -1,0 +1,3 @@
+[submodule "i18n_component"]
+	path = i18n_component
+	url = https://github.com/alaltitov/esphome.git

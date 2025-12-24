@@ -34,6 +34,20 @@ esphome:
             id: lvgl_24h_clock_switch
             state:
               checked: !lambda "return id(use_24h_clock);"
+    # Apply i18n to the screen timeout dropdown on settings screen.
+    - priority: 50
+      then:
+        - lambda: |-
+            lv_obj_t *dropdown_obj = id(lvgl_display_backlight_timeout).obj;
+            if (dropdown_obj == nullptr) return;
+            uint16_t old_selection = lv_dropdown_get_selected(dropdown_obj);
+            std::string options = 
+              id(translate).translate("settings.never") + "\n" +
+              id(translate).translate("settings.minute1") + "\n" +
+              id(translate).translate("settings.minute5") + "\n" +
+              id(translate).translate("settings.minute15");
+            lv_dropdown_set_options(dropdown_obj, options.c_str());
+            lv_dropdown_set_selected(dropdown_obj, old_selection);
 
 logger:
   level: INFO
