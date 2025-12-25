@@ -85,7 +85,7 @@ widgets:
                                 return id(user_is_interacting);
                             then:
                               - light.control:
-                                  id: indicator_display_backlight
+                                  id: display_backlight
                                   state: on
                                   brightness: !lambda 'return x / 100.0;'
                     - label:

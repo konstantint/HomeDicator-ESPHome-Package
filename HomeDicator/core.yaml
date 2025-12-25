@@ -11,9 +11,6 @@ text_sensor:
   - !include core/config/common/text_sensors/github_release_tag.yaml
   - !include core/config/common/text_sensors/esphome_version.yaml
 
-binary_sensor:
-  - !include core/config/common/binary_sensors/indicator_button.yaml
-
 switch:
   - !include core/config/common/switches/use_24h_clock_switch.yaml
 

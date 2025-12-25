@@ -114,7 +114,7 @@ script:
                   lvgl.is_paused
           then:
             - logger.log: "LVGL pausing - enabling snow for burn-in prevention"
-            - light.turn_off: indicator_display_backlight
+            - light.turn_off: display_backlight
             - delay: 200ms
             - lvgl.pause:
                 show_snow: true
@@ -128,4 +128,4 @@ script:
           - lvgl.resume:
           - lvgl.widget.redraw:
           - delay: 200ms
-          - light.turn_on: indicator_display_backlight
+          - light.turn_on: display_backlight

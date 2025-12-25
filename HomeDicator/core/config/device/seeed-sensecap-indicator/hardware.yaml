@@ -1,3 +1,6 @@
+binary_sensor:
+  - !include ../../common/binary_sensors/indicator_button.yaml
+
 esp32:
   board: esp32-s3-devkitc-1
   variant: esp32s3
@@ -20,7 +23,7 @@ output:
     pin:
       number: GPIO45
       ignore_strapping_warning: true
-    id: ledc_gpio45
+    id: backlight_pwm
     frequency: 100Hz
 
 i2c:
