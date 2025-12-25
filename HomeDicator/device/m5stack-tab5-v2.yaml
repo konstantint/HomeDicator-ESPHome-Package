@@ -1,4 +1,0 @@
-packages:
-  HomeDicatorBase: !include ../core.yaml
-  
-<<: !include ../core/config/device/m5stack-tab5-v2/hardware.yaml

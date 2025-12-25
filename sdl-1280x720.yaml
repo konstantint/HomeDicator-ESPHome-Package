@@ -1,0 +1,4 @@
+packages:
+  core: !include HomeDicator/core.yaml
+  hardware: !include HomeDicator/hardware/sdl.yaml
+  theme: !include HomeDicator/ui/themes/1280x720/theme.yaml

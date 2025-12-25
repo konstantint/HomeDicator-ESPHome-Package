@@ -1,0 +1,78 @@
+globals:
+  - id: use_24h_clock
+    type: bool
+    initial_value: "true"
+    restore_value: yes
+
+switch:
+  - platform: lvgl
+    widget: lvgl_24h_clock_switch
+    name: Use 24h hour clock
+    id: use_24h_clock_switch
+    entity_category: config
+    internal: true
+    on_turn_on:
+      - globals.set:
+          id: use_24h_clock
+          value: 'true'
+      - script.execute: update_time
+    on_turn_off:
+      - globals.set:
+          id: use_24h_clock
+          value: 'false'
+      - script.execute: update_time
+
+esphome:
+  on_boot:
+    - priority: 200.0
+      then:
+        - lambda: |-
+            id(use_24h_clock_switch).publish_state(id(use_24h_clock));
+        - lvgl.widget.update:
+            id: lvgl_24h_clock_switch
+            state:
+              checked: !lambda "return id(use_24h_clock);"
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    on_time:
+      # Update clock every minute
+      - seconds: 0
+        then:
+          if:
+            condition:
+              time.has_time:
+            then:
+              - script.execute: update_time
+    # And on time sync
+    on_time_sync:
+      then:
+        if:
+          condition:
+            time.has_time:
+          then:
+            - script.execute: update_time
+
+script:
+  - id: update_time
+    then:
+      - if:
+          condition:
+            lambda: 'return id(use_24h_clock);'
+          then:
+            - lvgl.label.update:
+                id: lvgl_current_time
+                text:
+                  format: "%02d:%02d"
+                  args: [ 'id(homeassistant_time).now().hour', 'id(homeassistant_time).now().minute' ]
+          else:
+            - lvgl.label.update:
+                id: lvgl_current_time
+                text: !lambda |-
+                  auto now = id(homeassistant_time).now();
+                  int hour = now.hour % 12 == 0 ? 12 : now.hour % 12;
+                  auto am_pm = now.hour >= 12 ? "PM" : "AM";
+                  static char time_text[10];
+                  snprintf(time_text, sizeof(time_text), "%d:%02d %s", hour, now.minute, am_pm);
+                  return time_text;

@@ -1,0 +1,32 @@
+packages:
+  i18n: !include i18n.yaml
+  fonts: !include fonts.yaml
+  gradients: !include gradients.yaml
+  navigation: !include navigation.yaml
+  connection: !include connection.yaml
+  settings_page: !include settings_page.yaml
+  time: !include time.yaml
+  backlight: !include backlight.yaml
+  auto_page_cycling: !include auto_page_cycling.yaml
+  user_interface_debug_mode: !include user_interface_debug_mode.yaml
+
+lvgl:
+  disp_bg_color: 0x1b1b1b
+  top_layer:
+    scrollable: false
+    widgets:
+      # BOTTOM DOTS
+      - !include widgets/bottom_pager.yaml
+
+      # TAP AREAS
+      - !include widgets/bottom_pager_tap_area.yaml
+      - !include widgets/left_tap_area.yaml
+      - !include widgets/right_tap_area.yaml
+      - !include widgets/top_tap_area.yaml
+
+      # CONNECTION VIEW
+      - !include widgets/connecting_view.yaml
+
+      # TIME AND WIFI STATUS
+      - !include widgets/time.yaml
+      - !include widgets/wifi.yaml

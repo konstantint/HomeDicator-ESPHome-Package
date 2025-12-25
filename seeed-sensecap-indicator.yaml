@@ -1,0 +1,4 @@
+packages:
+  core: !include HomeDicator/core.yaml
+  hardware:  !include HomeDicator/hardware/seeed-sensecap-indicator.yaml
+  dimensions: !include HomeDicator/ui/themes/480x480/theme.yaml

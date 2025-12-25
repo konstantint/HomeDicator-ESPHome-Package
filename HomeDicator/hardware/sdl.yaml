@@ -1,0 +1,21 @@
+host:
+
+output:
+  - platform: template
+    id: backlight_pwm
+    type: float
+    write_action:
+      - logger.log: "Backlight output changed!"
+
+touchscreen:
+  - platform: sdl
+    id: development_touchscreen
+
+display:
+  - platform: sdl
+    id: development_display
+    show_test_card: true
+    auto_clear_enabled: false
+    dimensions:
+      width: ${screen_width}
+      height: ${screen_height}

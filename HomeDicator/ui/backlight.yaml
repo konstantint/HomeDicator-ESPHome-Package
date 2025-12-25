@@ -1,0 +1,102 @@
+globals:
+  - id: turn_off_screen_after_value
+    type: int
+    initial_value: "0"
+    restore_value: yes
+
+select:
+  - platform: lvgl
+    widget: lvgl_display_backlight_timeout
+    name: Turn off screen after
+    id: turn_off_screen_after_selector
+    entity_category: config
+    internal: true
+    on_value:
+      - globals.set:
+          id: turn_off_screen_after_value
+          value: !lambda "return i;"
+
+esphome:
+  on_boot:
+    - priority: 200
+      then:
+        - select.set_index:
+            id: turn_off_screen_after_selector
+            index: !lambda "return id(turn_off_screen_after_value);"
+    # Apply i18n to the screen timeout dropdown on settings screen.
+    - priority: 50
+      then:
+        - lambda: |-
+            lv_obj_t *dropdown_obj = id(lvgl_display_backlight_timeout).obj;
+            if (dropdown_obj == nullptr) return;
+            uint16_t old_selection = lv_dropdown_get_selected(dropdown_obj);
+            std::string options = 
+              id(translate).translate("settings.never") + "\n" +
+              id(translate).translate("settings.minute1") + "\n" +
+              id(translate).translate("settings.minute5") + "\n" +
+              id(translate).translate("settings.minute15");
+            lv_dropdown_set_options(dropdown_obj, options.c_str());
+            lv_dropdown_set_selected(dropdown_obj, old_selection);
+
+
+light:
+  - platform: monochromatic
+    output: backlight_pwm
+    name: Display
+    id: display_backlight
+    entity_category: config
+    restore_mode: RESTORE_AND_ON
+    default_transition_length: 200ms
+    initial_state:
+      brightness: "50%"
+    on_state:
+      if:
+        condition:
+          lambda: |-
+            return !id(user_is_interacting);
+        then:
+          - delay: 220ms # Waiting for transition to be done so the new state is reflected. Maybe there is a better way?
+          - lvgl.slider.update:
+              id: lvgl_indicator_lcd_brightness_slider
+              value: !lambda 'return id(display_backlight).current_values.get_brightness() * 100.0;'
+
+lvgl:
+  on_idle:
+    timeout: !lambda |-
+      switch (id(turn_off_screen_after_value)) {
+        case 0: return 600000;  // "Never" (10 min in ms / will check as a condition in the then block)
+        case 1: return 60000;   // "1 min"
+        case 2: return 300000;  // "5 min"
+        case 3: return 900000;  // "15 min"
+        default: return 600000; // Default to 10 min in case of an invalid index
+      }
+    then:
+      - script.execute: activity_timeout_reached
+
+script:
+  - id: activity_timeout_reached
+    then:
+      - if:
+          condition:
+            and:
+              - lambda: |-
+                  return id(turn_off_screen_after_value) != 0;
+              - not:
+                  lvgl.is_paused
+          then:
+            - logger.log: "LVGL pausing - enabling snow for burn-in prevention"
+            - light.turn_off: display_backlight
+            - delay: 200ms
+            - lvgl.pause:
+                show_snow: true
+
+  - id: activity_detected
+    then:
+      if:
+        condition: lvgl.is_paused
+        then:
+          - logger.log: "User interacted - LVGL resuming"
+          - lvgl.resume:
+          - lvgl.widget.redraw:
+          - delay: 200ms
+          - light.turn_on: display_backlight

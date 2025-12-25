@@ -1,0 +1,24 @@
+substitutions:
+  # Auto-cycling will flip pages up to "cycleable_pages" and then go to 1
+  cycleable_pages: 3
+
+globals:
+  - id: auto_cycling_enabled
+    type: bool
+    initial_value: "false"
+    restore_value: false
+
+# Auto-cycle through info pages (but not button pages)
+interval:
+  - interval: 25s
+    then:
+      - lambda: |-
+          if (id(user_is_interacting) || id(page_controls_hidden) || !id(auto_cycling_enabled)) return;
+          int curr = id(current_page);
+          if (curr < ${cycleable_pages}-1) {
+            id(next_page).execute();
+          } 
+          else if (curr == ${cycleable_pages}-1) {
+            id(go_to_first_page).execute();
+          }
+          // else: do nothing

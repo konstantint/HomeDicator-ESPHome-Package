@@ -1,0 +1,21 @@
+substitutions:
+  user_interface_debug_mode: "false"
+
+lvgl:
+  disp_bg_color: 0x1b1b1b
+  theme: 
+    obj:
+      border_width: !lambda |-
+        if (${user_interface_debug_mode}) {
+          return 1;
+        } else {
+          return 0;
+        }
+
+    label:
+      border_width: !lambda |-
+        if (${user_interface_debug_mode}) {
+          return 1;
+        } else {
+          return 0;
+        }

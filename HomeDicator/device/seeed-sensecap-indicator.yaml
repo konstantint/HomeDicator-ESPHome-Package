@@ -1,4 +1,0 @@
-packages:
-  HomeDicatorBase: !include ../core.yaml
-  
-<<: !include ../core/config/device/seeed-sensecap-indicator/hardware.yaml

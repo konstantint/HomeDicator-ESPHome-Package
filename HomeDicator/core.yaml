@@ -1,36 +1,27 @@
----
 substitutions:
-  homedicator_core_version_tag: "v0.3.2-kt"
   homedicator_package_dir: "HomeDicator-ESPHome-Package"
+  api_key: "API key"
 
-sensor:
-  - !include core/config/common/sensors/wifi_signal.yaml
-  - !include core/config/common/sensors/wifi_signal_percent.yaml
+esphome:
+  name: ${device_name}
+  friendly_name: ${device_friendly_name}
+  project:
+    name: paulvincentroll.HomeDicator
+    version: konstantint edition
 
-text_sensor:
-  - !include core/config/common/text_sensors/github_release_tag.yaml
-  - !include core/config/common/text_sensors/esphome_version.yaml
+  # Only needed for the thermostat widget.
+  # includes:
+  #  - ${homedicator_package_dir}/HomeDicator/ui/templates/tiles/thermostat/helpers/adjust_color.h
 
-switch:
-  - !include core/config/common/switches/use_24h_clock_switch.yaml
+  platformio_options:
+    build_unflags: -Werror=all
 
-lvgl:
-  disp_bg_color: 0x1b1b1b
-  gradients: !include core/config/common/lvgl/gradients.yaml
-  on_idle: !include core/config/common/lvgl/on_idle.yaml
-  top_layer: !include user_interface/pages/top_layer/top_layer.yaml
-  theme: !include user_interface/theme/theme.yaml
-  style_definitions: !include user_interface/theme/style_definitions.yaml
-  pages:
-    - !include user_interface/pages/settings.yaml
-    - !include user_interface/pages/about.yaml
+logger:
+  level: INFO
+
+api:
+  encryption:
+    key: ${api_key}
 
 packages:
-  fonts: !include core/config/common/fonts.yaml
-  esphome: !include core/config/common/esphome.yaml
-  scripts: !include core/config/common/scripts.yaml
-  light: !include core/config/common/light.yaml
-  time: !include core/config/common/time.yaml
-  select: !include core/config/common/select.yaml
-  globals: !include core/config/common/globals.yaml
-  i18n: !include core/config/common/i18n.yaml
+  ui: !include ui/ui.yaml
