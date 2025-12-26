@@ -304,3 +304,10 @@ image:
   defaults:
     type: rgb565
     byte_order: little_endian
+
+# Needed for SD card access.
+spi:
+  clk_pin: 43
+  mosi_pin: 44
+  miso_pin: 39
+  id: spi_bus
