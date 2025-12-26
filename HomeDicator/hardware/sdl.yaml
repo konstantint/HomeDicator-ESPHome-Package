@@ -19,3 +19,7 @@ display:
     dimensions:
       width: ${screen_width}
       height: ${screen_height}
+
+image:
+  defaults:
+    type: rgb565

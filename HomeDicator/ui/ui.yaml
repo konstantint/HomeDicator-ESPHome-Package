@@ -1,6 +1,5 @@
 packages:
   i18n: !include i18n.yaml
-  fonts: !include fonts.yaml
   gradients: !include gradients.yaml
   navigation: !include navigation.yaml
   pager_dots: !include bottom_pager_dots.yaml

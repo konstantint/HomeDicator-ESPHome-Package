@@ -2,6 +2,9 @@ substitutions:
   screen_width: 1280
   screen_height: 720
 
+packages:
+  fonts: !include fonts.yaml
+
 lvgl:
   style_definitions:
     - id: full_width
@@ -26,6 +29,16 @@ lvgl:
       height: 660
     - id: right_tap_area_x
       x: 1260
+    - id: left_central_tap_area 
+      x: 20
+      y: 20
+      width: !lambda return ${screen_width}/2 - 20;
+      height: !lambda return ${screen_height} - 2*20;
+    - id: right_central_tap_area 
+      x: !lambda return ${screen_width}/2;
+      y: 20
+      width: !lambda return ${screen_width}/2 - 20;
+      height: !lambda return ${screen_height} - 2*20;
     - id: content_container
       x: 0
       y: 90

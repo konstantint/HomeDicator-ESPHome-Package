@@ -2,6 +2,9 @@ substitutions:
   screen_width: 480
   screen_height: 480
 
+packages:
+  fonts: !include fonts.yaml
+
 lvgl:
   style_definitions:
     - id: full_width
@@ -34,6 +37,16 @@ lvgl:
       pad_all: 0
       pad_left: 18
       bg_opa: TRANSP
+    - id: left_central_tap_area 
+      x: 20
+      y: 20
+      width: !lambda return ${screen_width}/2 - 20;
+      height: !lambda return ${screen_height} - 2*20;
+    - id: right_central_tap_area 
+      x: !lambda return ${screen_width}/2;
+      y: 20
+      width: !lambda return ${screen_width}/2 - 20;
+      height: !lambda return ${screen_height} - 2*20;
     - id: page_title_y
       y: 50
     - id: back_button

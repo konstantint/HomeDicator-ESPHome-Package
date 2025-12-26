@@ -293,3 +293,8 @@ speaker:
     buffer_duration: 100ms
     bits_per_sample: 16bit
     sample_rate: 48000
+
+image:
+  defaults:
+    type: rgb565
+    byte_order: little_endian

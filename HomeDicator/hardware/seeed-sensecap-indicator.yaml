@@ -1,6 +1,11 @@
 packages:
   wifi_signal: !include common/wifi_signal_sensor.yaml
 
+esphome:
+  platformio_options:
+    build_flags:
+      - -DUSE_SENSECAP_RP2040_FIRMWARE
+
 esp32:
   board: esp32-s3-devkitc-1
   variant: esp32s3
@@ -148,3 +153,7 @@ binary_sensor:
                     lambda: return !id(page_controls_hidden);
                   then:
                     script.execute: next_page
+
+image:
+  defaults:
+    type: rgb565
