@@ -74,8 +74,8 @@ lvgl:
                               text_font: brightness_small
                               text: "\U000F05A8"
                           - slider:
-                              height: 25
                               id: lvgl_indicator_lcd_brightness_slider
+                              styles: settings_display_brightness_slider
                               value: 100
                               min_value: 5
                               max_value: 100
@@ -128,8 +128,7 @@ lvgl:
                         text: !lambda return id(translate).translate("settings.turn_off_screen_after");
                     - dropdown:
                         id: lvgl_display_backlight_timeout
-                        height: 40
-                        width: 110
+                        styles: settings_display_backlight_dropdown
                         bg_color: 0x181818
                         text_color: 0xffffff
                         border_width: 0
@@ -191,9 +190,7 @@ lvgl:
                         text_font: libreFranklin18
                         text: !lambda return id(translate).translate("settings.auto_cycle_through_screens");
                     - switch:
-                        id: lvgl_screen_auto_cycling_switch
+                        id: lvgl_auto_cycling_enabled_switch
                         height: 40
                         width: 85
                         bg_color: 0xdddddd
-                        on_value:
-                          lambda: id(auto_cycling_enabled) = x;

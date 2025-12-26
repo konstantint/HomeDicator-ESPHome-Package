@@ -1,7 +1,14 @@
-# NB: The font names here are the same as in the 480x480 theme for legacy reasons,
-# however the sizes are 1.5 larger. 
 substitutions:
-  size35: 53
+  size14: 14
+  size18: 18
+  size20: 20
+  size24: 24
+  size25: 25
+  size30: 30
+  size32: 32
+  size35: 35
+  size50: 50
+
 font:
   # ---------------
   # Icons for tiles
@@ -271,19 +278,20 @@ font:
       "\U000F059E", # mdi:weather-windy-variant
       "\U000F111C", # mdi:window-shutter
       "\U000F111E", # mdi:window-shutter-open
+      "\U000F058E", # mdi:water-percent
     ]
 
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: icons18
-    size: 18
+    size: ${size18}
     bpp: 1
     glyphs:
       - "\U000F050F" # mdi:thermometer
       - "\U000F058E" # mdi:water-percent
 
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
-    id: weather_icons50
-    size: 50
+    id: icons50
+    size: ${size50}
     bpp: 1
     glyphs: [
       "\U000F0590", # mdi:weather-cloudy
@@ -302,6 +310,7 @@ font:
       "\U000F14E4", # mdi:weather-sunny-off
       "\U000F059D", # mdi:weather-windy
       "\U000F059E", # mdi:weather-windy-variant
+      "\U000F1904", # mdi:home-lightning-bolt-outline
     ]
 
   # ----------------------
@@ -310,7 +319,7 @@ font:
   # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: icons24
-    size: 24
+    size: ${size24}
     bpp: 8
     glyphs: [
       "\U000F092E",  # mdi:wifi-strength-off-outline
@@ -324,7 +333,7 @@ font:
   # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: brightness_small
-    size: 20
+    size: ${size20}
     bpp: 8
     glyphs: [
       "\U000F05A8",  # mdi:white-balance-sunny
@@ -333,7 +342,7 @@ font:
   # - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: brightness_big
-    size: 30
+    size: ${size30}
     bpp: 8
     glyphs: [
       "\U000F05A8",  # mdi:white-balance-sunny
@@ -354,7 +363,7 @@ font:
       family: Libre+Franklin
       weight: 600
     id: libreFranklin10
-    size: 14
+    size: ${size14}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -364,7 +373,7 @@ font:
       family: Libre+Franklin
       weight: 400
     id: libreFranklin10Light
-    size: 14
+    size: ${size14}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -374,7 +383,7 @@ font:
       family: Libre+Franklin
       weight: 600
     id: libreFranklin14
-    size: 14
+    size: ${size14}
     bpp: 8
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 
@@ -385,7 +394,7 @@ font:
     #     family: Libre+Franklin,Montserrat
     #     weight: 600
     id: libreFranklin18
-    size: 18
+    size: ${size18}
     bpp: 8
     glyphs:
       - '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -396,7 +405,7 @@ font:
       family: Libre+Franklin
       weight: 600
     id: libreFranklin24
-    size: 24
+    size: ${size24}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -406,7 +415,7 @@ font:
       family: Libre+Franklin
       weight: 500
     id: libreFranklin20Light
-    size: 20
+    size: ${size20}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -416,7 +425,7 @@ font:
       family: Libre+Franklin
       weight: 500
     id: libreFranklin25Light
-    size: 25
+    size: ${size25}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -426,7 +435,7 @@ font:
       family: Libre+Franklin
       weight: 600
     id: libreFranklin32
-    size: 32
+    size: ${size32}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -436,7 +445,7 @@ font:
       family: Libre+Franklin
       weight: 600
     id: libreFranklin50
-    size: 50
+    size: ${size50}
     bpp: 8
     # glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²'
     glyphs: '!"%()+=,-_.:°/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ abcdefghijklmnopqrstuvwxyzäöüµ³²АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'

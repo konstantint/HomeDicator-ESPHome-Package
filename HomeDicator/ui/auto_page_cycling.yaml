@@ -5,8 +5,24 @@ substitutions:
 globals:
   - id: auto_cycling_enabled
     type: bool
-    initial_value: "false"
-    restore_value: false
+    initial_value: "true"
+    restore_value: yes
+
+switch:
+  - platform: lvgl
+    widget: lvgl_auto_cycling_enabled_switch
+    name: Auto-cycling enabled
+    id: auto_cycling_enabled_switch
+    entity_category: config
+    internal: true
+    on_turn_on:
+      - globals.set:
+          id: auto_cycling_enabled
+          value: 'true'
+    on_turn_off:
+      - globals.set:
+          id: auto_cycling_enabled
+          value: 'false'
 
 # Auto-cycle through info pages (but not button pages)
 interval:

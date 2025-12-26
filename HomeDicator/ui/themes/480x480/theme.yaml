@@ -3,7 +3,7 @@ substitutions:
   screen_height: 480
 
 packages:
-  fonts: !include fonts.yaml
+  fonts: !include ../common/fonts.yaml
 
 lvgl:
   style_definitions:
@@ -49,6 +49,8 @@ lvgl:
       height: !lambda return ${screen_height} - 2*20;
     - id: page_title_y
       y: 50
+    
+    # Settings page
     - id: back_button
       x: 6
       height: 40
@@ -58,8 +60,54 @@ lvgl:
       height: 80
     - id: settings_display_brightness_height
       height: 130
+    - id: settings_display_brightness_slider
+      height: 25
+    - id: settings_display_backlight_dropdown
+      height: 40
+      width: 110
     - id: settings_item_internal_width
       width: 440
+
+    # Floorplan 
+    - id: floorplan_pill
+      bg_color: 0x000000
+      bg_opa: 20%
+      radius: 8
+      pad_all: 2
+      pad_left: 3
+      pad_right: 3
+      border_width: 0
+      width: SIZE_CONTENT
+      height: SIZE_CONTENT
+
+    - id: floorplan_pill_large
+      bg_color: 0x000000
+      bg_opa: 20%
+      radius: 10
+      pad_all: 3
+      pad_left: 5
+      pad_right: 5
+      border_width: 0
+      width: SIZE_CONTENT
+      height: SIZE_CONTENT
+
+    - id: floorplan_icon
+      text_color: 0xffffff
+      text_font: icons18
+
+    - id: floorplan_icon_large
+      text_color: 0xffffff
+      text_font: icons35
+
+    - id: floorplan_value
+      text_color: 0xffffff
+      text_font: libreFranklin14
+
+    - id: floorplan_value_large
+      text_color: 0xffffff
+      text_font: libreFranklin18
+ 
+    # Info tiles
     - id: info_or_button_tile
       width: 216
       height: 165

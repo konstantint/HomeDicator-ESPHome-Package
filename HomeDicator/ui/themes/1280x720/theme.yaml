@@ -2,8 +2,19 @@ substitutions:
   screen_width: 1280
   screen_height: 720
 
+  # Font sizes x 1.5
+  size14: 21
+  size18: 27
+  size20: 30
+  size24: 36
+  size25: 38
+  size30: 45
+  size32: 48
+  size35: 53
+  size50: 75
+
 packages:
-  fonts: !include fonts.yaml
+  fonts: !include ../common/fonts.yaml
 
 lvgl:
   style_definitions:
@@ -14,69 +25,118 @@ lvgl:
       y: 0
       height: ${screen_height}
     - id: bottom_pager_y
-      y: 690
+      y: 690  # 720-30
     - id: bottom_tap_area_y
-      y: 675
+      y: 675  # 720-50+5
     - id: bottom_tap_area_widget_size
       height: 45
-      width: 355
+      width: 400
     - id: top_tap_area_y
       y: 0
       height: 70
     - id: leftright_tap_area
       y: 70
-      width: 20
+      width: 40
       height: 660
     - id: right_tap_area_x
-      x: 1260
+      x: 1240  # 1280 - 40
     - id: left_central_tap_area 
-      x: 20
-      y: 20
-      width: !lambda return ${screen_width}/2 - 20;
-      height: !lambda return ${screen_height} - 2*20;
+      x: 40
+      y: 70
+      width: !lambda return ${screen_width}/2 - 40;
+      height: !lambda return ${screen_height} - 70 - 50;
     - id: right_central_tap_area 
       x: !lambda return ${screen_width}/2;
-      y: 20
-      width: !lambda return ${screen_width}/2 - 20;
-      height: !lambda return ${screen_height} - 2*20;
+      y: 70
+      width: !lambda return ${screen_width}/2 - 40;
+      height: !lambda return ${screen_height} - 70 - 50;
     - id: content_container
-      x: 0
-      y: 90
-      width: ${screen_width}
-      height: 582
+      x: 40
+      y: 120
+      width: !lambda return ${screen_width} - 2*40;
+      height: 550  # 720 - 120 - 50
       pad_all: 0
-      pad_left: 18
       bg_opa: TRANSP
     - id: page_title_y
       y: 50
+    
+    # Settings screen
     - id: back_button
       x: 6
-      height: 40
+      height: 60
     - id: settings_item
-      width: 443
-      radius: 15
-      height: 80
+      width: 703
+      radius: 20
+      height: 110
     - id: settings_display_brightness_height
-      height: 130
+      height: 180
+    - id: settings_display_brightness_slider
+      height: 32
+      width: 450
+    - id: settings_display_backlight_dropdown
+      height: 60
+      width: 150
+      radius: 10
     - id: settings_item_internal_width
-      width: 440
+      width: 700
+
+    # Floorplan 
+    - id: floorplan_pill
+      bg_color: 0x000000
+      bg_opa: 20%
+      radius: 16
+      pad_all: 4
+      pad_left: 6
+      pad_right: 6
+      border_width: 0
+      width: SIZE_CONTENT
+      height: SIZE_CONTENT
+
+    - id: floorplan_pill_large
+      bg_color: 0x000000
+      bg_opa: 20%
+      radius: 20
+      pad_all: 6
+      pad_left: 10
+      pad_right: 10
+      border_width: 0
+      width: SIZE_CONTENT
+      height: SIZE_CONTENT
+
+    - id: floorplan_icon
+      text_color: 0xffffff
+      text_font: icons35
+
+    - id: floorplan_icon_large
+      text_color: 0xffffff
+      text_font: icons50
+
+    - id: floorplan_value
+      text_color: 0xffffff
+      text_font: libreFranklin24
+
+    - id: floorplan_value_large
+      text_color: 0xffffff
+      text_font: libreFranklin32
+    
+    # Info tiles
     - id: info_or_button_tile
-      width: 216
-      height: 165
-      radius: 15
+      width: 320
+      height: 250
+      radius: 20
       bg_color: 0x272727
       bg_opa: COVER
       pad_all: 0
     - id: info_or_button_tile_small
-      width: 140
-      height: 107
-      radius: 15
+      width: 210
+      height: 160
+      radius: 20
       bg_color: 0x272727
       bg_opa: COVER
       pad_all: 0
     - id: info_or_button_tile_wide
-      width: 443
-      height: 165
+      width: 660
+      height: 250
       radius: 15
       bg_color: 0x272727
       bg_opa: COVER
@@ -89,7 +149,7 @@ lvgl:
     - id: info_or_button_tile_info
       height: SIZE_CONTENT
       pad_all: 0
-      pad_top: 12
+      pad_top: 18
       bg_opa: TRANSP
       text_color: 0xeebf41
     - id: info_or_button_tile_subtitle
