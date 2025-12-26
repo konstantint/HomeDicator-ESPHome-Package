@@ -1,14 +1,12 @@
 obj:
   bg_opa: TRANSP
-  x: 0
-  y: 50
-  width: 480
+  styles: ["page_title_y", "full_width"]
   height: SIZE_CONTENT
   pad_all: 0
   border_color: red
   widgets:
     - label:
-        width: 480
+        styles: full_width
         pad_all: 0
         height: SIZE_CONTENT
         text_color: 0xFFFFFF
@@ -16,12 +14,11 @@ obj:
         text_align: CENTER
         text: ${title}
     - button:
-        x: 6
+        styles: back_button
         bg_opa: TRANSP
         border_width: 0
         shadow_width: 0
         width: SIZE_CONTENT
-        height: 40
         pad_all: 0
         on_click:
           then:

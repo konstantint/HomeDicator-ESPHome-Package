@@ -3,7 +3,8 @@ packages:
   fonts: !include fonts.yaml
   gradients: !include gradients.yaml
   navigation: !include navigation.yaml
-  connection: !include connection.yaml
+  pager_dots: !include bottom_pager_dots.yaml
+  connecting_view: !include connecting_view.yaml
   settings_page: !include settings_page.yaml
   time: !include time.yaml
   backlight: !include backlight.yaml
@@ -15,17 +16,11 @@ lvgl:
   top_layer:
     scrollable: false
     widgets:
-      # BOTTOM DOTS
-      - !include widgets/bottom_pager.yaml
-
       # TAP AREAS
       - !include widgets/bottom_pager_tap_area.yaml
       - !include widgets/left_tap_area.yaml
       - !include widgets/right_tap_area.yaml
       - !include widgets/top_tap_area.yaml
-
-      # CONNECTION VIEW
-      - !include widgets/connecting_view.yaml
 
       # TIME AND WIFI STATUS
       - !include widgets/time.yaml

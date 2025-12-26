@@ -28,16 +28,16 @@ lvgl:
               previous_page_name: !lambda return id(translate).translate("back");
         - obj:
             styles: content_container
+            pad_left: 0
             layout:
               type: FLEX
-              flex_flow: ROW_WRAP
+              flex_flow: COLUMN
               flex_align_main: LV_FLEX_ALIGN_START
-              flex_align_cross: CENTER
+              flex_align_cross: LV_FLEX_ALIGN_START
+              flex_align_track: LV_FLEX_ALIGN_CENTER
             widgets:
               - obj:
-                  width: 443
-                  height: 130
-                  radius: 15
+                  styles: ["settings_item", "settings_display_brightness_height"]
                   bg_color: 0x202020
                   bg_opa: COVER
                   pad_all: 0
@@ -55,8 +55,8 @@ lvgl:
                         text_font: libreFranklin18
                         text: !lambda return id(translate).translate("settings.display_brightness");
                     - obj:
+                        styles: settings_item_internal_width
                         bg_opa: TRANSP
-                        width: 440
                         height: SIZE_CONTENT
                         pad_all: 0
                         pad_top: 5
@@ -109,9 +109,7 @@ lvgl:
                               text_font: brightness_big
                               text: "\U000F05A8"
               - obj:
-                  width: 443
-                  height: 80
-                  radius: 15
+                  styles: settings_item
                   bg_color: 0x202020
                   bg_opa: COVER
                   pad_all: 0
@@ -152,9 +150,7 @@ lvgl:
                           - "5 min"
                           - "15 min"
               - obj:
-                  width: 443
-                  height: 80
-                  radius: 15
+                  styles: settings_item
                   bg_color: 0x202020
                   bg_opa: COVER
                   pad_all: 0
@@ -177,9 +173,7 @@ lvgl:
                         width: 85
                         bg_color: 0xdddddd
               - obj:
-                  width: 443
-                  height: 80
-                  radius: 15
+                  styles: settings_item
                   bg_color: 0x202020
                   bg_opa: COVER
                   pad_all: 0

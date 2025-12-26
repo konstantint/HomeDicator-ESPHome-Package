@@ -4,14 +4,49 @@ substitutions:
 
 lvgl:
   style_definitions:
+    - id: full_width
+      x: 0
+      width: ${screen_width}
+    - id: full_height
+      y: 0
+      height: ${screen_height}
+    - id: bottom_pager_y
+      y: 450
+    - id: bottom_tap_area_y
+      y: 435
+    - id: bottom_tap_area_widget_size
+      height: 45
+      width: 235
+    - id: top_tap_area_y
+      y: 0
+      height: 70
+    - id: leftright_tap_area
+      y: 70
+      width: 20
+      height: 350
+    - id: right_tap_area_x
+      x: 460
     - id: content_container
       x: 0
       y: 90
-      width: 480
+      width: ${screen_width}
       height: 342
       pad_all: 0
       pad_left: 18
       bg_opa: TRANSP
+    - id: page_title_y
+      y: 50
+    - id: back_button
+      x: 6
+      height: 40
+    - id: settings_item
+      width: 443
+      radius: 15
+      height: 80
+    - id: settings_display_brightness_height
+      height: 130
+    - id: settings_item_internal_width
+      width: 440
     - id: info_or_button_tile
       width: 216
       height: 165

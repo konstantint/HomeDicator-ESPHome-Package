@@ -1,10 +1,7 @@
 obj:
   id: top_tap_area
-  x: 0
-  y: 0
+  styles: ["top_tap_area_y", "full_width"]
   pad_all: 0
-  width: 480
-  height: 70
   bg_opa: TRANSP
   on_press:
     then:

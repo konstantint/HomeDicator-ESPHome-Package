@@ -1,9 +1,6 @@
 obj:
   id: right_tap_area
-  x: 460
-  y: 70
-  width: 20
-  height: 350
+  styles: ["leftright_tap_area", "right_tap_area_x"]
   bg_opa: TRANSP
   pad_all: 0
   on_press:
