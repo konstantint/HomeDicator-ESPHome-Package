@@ -4,6 +4,12 @@
 packages:
   wifi_signal: !include common/wifi_signal_sensor.yaml
 
+esphome:
+  platformio_options:
+    build_flags:
+      # Signals to use little endian encoding for LVGL images
+      - -DUSE_RGB565LE
+
 esp32:
   board: esp32-p4-evboard
   flash_size: 16MB
