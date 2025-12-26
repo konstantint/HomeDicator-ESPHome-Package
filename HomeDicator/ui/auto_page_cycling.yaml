@@ -24,6 +24,17 @@ switch:
           id: auto_cycling_enabled
           value: 'false'
 
+esphome:
+  on_boot:
+    - priority: 200
+      then:
+        - lambda: |-
+            id(auto_cycling_enabled_switch).publish_state(id(auto_cycling_enabled));
+        - lvgl.widget.update:
+            id: lvgl_auto_cycling_enabled_switch
+            state:
+              checked: !lambda "return id(auto_cycling_enabled);"
+
 # Auto-cycle through info pages (but not button pages)
 interval:
   - interval: 25s
