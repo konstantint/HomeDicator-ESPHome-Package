@@ -1,6 +1,6 @@
 packages:
   core: !include HomeDicator/core.yaml
-  hardware: !include HomeDicator/hardware/m5stack-tab5-v2.yaml
+  hardware: !include HomeDicator/hardware/m5stack_tab5_v2_landscape_down.yaml
   theme: !include HomeDicator/ui/themes/1280x720/theme.yaml
 
   
