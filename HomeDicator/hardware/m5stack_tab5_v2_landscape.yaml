@@ -43,21 +43,8 @@ external_components:
     components: [mipi_dsi]
     refresh: 1h
 
-ota:
-  - platform: esphome
-    password: ${ota_key}
-
-wifi:
-  ssid: ${wifi_ssid}
-  password: ${wifi_password}
-  on_disconnect:
-      - lvgl.label.update:
-          id: lvgl_wifi_signal_icon
-          text: "\U000F092E"
-
 logger:
   hardware_uart: USB_SERIAL_JTAG
-
 
 output:
   - platform: ledc

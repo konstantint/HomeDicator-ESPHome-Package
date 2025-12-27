@@ -2,6 +2,18 @@ substitutions:
   homedicator_package_dir: "HomeDicator-ESPHome-Package"
   api_key: "API key"
 
+ota:
+  - platform: esphome
+    password: ${ota_key}
+
+wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
+  on_disconnect:
+      - lvgl.label.update:
+          id: lvgl_wifi_signal_icon
+          text: "\U000F092E"
+
 esphome:
   name: ${device_name}
   friendly_name: ${device_friendly_name}
