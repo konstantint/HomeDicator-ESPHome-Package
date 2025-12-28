@@ -1,28 +1,14 @@
-globals:
-  - id: turn_off_screen_after_value
-    type: int
-    initial_value: "0"
-    restore_value: yes
-
 select:
   - platform: lvgl
     widget: lvgl_display_backlight_timeout
     name: Turn off screen after
     id: turn_off_screen_after_selector
     entity_category: config
+    restore_value: true
     internal: true
-    on_value:
-      - globals.set:
-          id: turn_off_screen_after_value
-          value: !lambda "return i;"
 
 esphome:
   on_boot:
-    - priority: 200
-      then:
-        - select.set_index:
-            id: turn_off_screen_after_selector
-            index: !lambda "return id(turn_off_screen_after_value);"
     # Apply i18n to the screen timeout dropdown on settings screen.
     - priority: 50
       then:
@@ -63,7 +49,7 @@ light:
 lvgl:
   on_idle:
     timeout: !lambda |-
-      switch (id(turn_off_screen_after_value)) {
+      switch (id(turn_off_screen_after_selector).active_index().value_or(-1)) {
         case 0: return 600000;  // "Never" (10 min in ms / will check as a condition in the then block)
         case 1: return 60000;   // "1 min"
         case 2: return 300000;  // "5 min"
@@ -80,7 +66,7 @@ script:
           condition:
             and:
               - lambda: |-
-                  return id(turn_off_screen_after_value) != 0;
+                  return id(turn_off_screen_after_selector).active_index().value_or(0) != 0;
               - not:
                   lvgl.is_paused
           then:
