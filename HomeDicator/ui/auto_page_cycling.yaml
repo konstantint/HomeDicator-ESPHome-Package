@@ -2,12 +2,6 @@ substitutions:
   # Auto-cycling will flip pages up to "cycleable_pages" and then go to 1
   cycleable_pages: 3
 
-globals:
-  - id: auto_cycling_enabled
-    type: bool
-    initial_value: "true"
-    restore_value: yes
-
 switch:
   - platform: lvgl
     widget: lvgl_auto_cycling_enabled_switch
@@ -15,32 +9,14 @@ switch:
     id: auto_cycling_enabled_switch
     entity_category: config
     internal: true
-    on_turn_on:
-      - globals.set:
-          id: auto_cycling_enabled
-          value: 'true'
-    on_turn_off:
-      - globals.set:
-          id: auto_cycling_enabled
-          value: 'false'
-
-esphome:
-  on_boot:
-    - priority: 200
-      then:
-        - lambda: |-
-            id(auto_cycling_enabled_switch).publish_state(id(auto_cycling_enabled));
-        - lvgl.widget.update:
-            id: lvgl_auto_cycling_enabled_switch
-            state:
-              checked: !lambda "return id(auto_cycling_enabled);"
+    restore_mode: RESTORE_DEFAULT_OFF
 
 # Auto-cycle through info pages (but not button pages)
 interval:
   - interval: 25s
     then:
       - lambda: |-
-          if (id(user_is_interacting) || id(page_controls_hidden) || !id(auto_cycling_enabled)) return;
+          if (id(user_is_interacting) || id(page_controls_hidden) || !id(auto_cycling_enabled_switch).state) return;
           int curr = id(current_page);
           if (curr < ${cycleable_pages}-1) {
             id(next_page).execute();
