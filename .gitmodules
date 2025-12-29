@@ -1,3 +1,4 @@
 [submodule "i18n_component"]
 	path = i18n_component
-	url = https://github.com/alaltitov/esphome.git
+    url = git@github.com:konstantint/esphome_i18n_component.git
+
