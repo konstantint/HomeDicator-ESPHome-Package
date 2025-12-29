@@ -83,10 +83,10 @@ lvgl:
     - id: floorplan_pill
       bg_color: 0x000000
       bg_opa: 20%
-      radius: 8
-      pad_all: 2
-      pad_left: 3
-      pad_right: 3
+      radius: 4
+      pad_all: 1
+      pad_left: 2
+      pad_right: 2
       border_width: 0
       width: SIZE_CONTENT
       height: SIZE_CONTENT
@@ -94,10 +94,10 @@ lvgl:
     - id: floorplan_pill_large
       bg_color: 0x000000
       bg_opa: 20%
-      radius: 10
-      pad_all: 3
-      pad_left: 5
-      pad_right: 5
+      radius: 5
+      pad_all: 2
+      pad_left: 3
+      pad_right: 3
       border_width: 0
       width: SIZE_CONTENT
       height: SIZE_CONTENT
