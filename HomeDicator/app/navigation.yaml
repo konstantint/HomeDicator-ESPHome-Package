@@ -42,12 +42,14 @@ lvgl:
             - obj:
                 bg_opa: TRANSP
                 styles: bottom_tap_area_widget_size
+                scrollable: false
                 on_press:
                   then:
                     - script.execute: previous_page
             - obj:
                 bg_opa: TRANSP
                 styles: bottom_tap_area_widget_size
+                scrollable: false
                 on_press:
                   then:
                     - script.execute: next_page
