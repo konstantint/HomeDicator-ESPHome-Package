@@ -12,6 +12,63 @@ globals:
     initial_value: "false"
     restore_value: no
 
+lvgl:
+  top_layer:
+    widgets:
+      - obj:
+          id: top_tap_area
+          styles: ["top_tap_area_y", "full_width"]
+          pad_all: 0
+          bg_opa: TRANSP
+          on_press:
+            then:
+              - script.execute: hide_page_control_elements
+              - lvgl.page.show:
+                  animation: OVER_BOTTOM
+                  time: ${page_transition_time}
+                  id: settings
+      - obj:
+          id: bottom_tap_area
+          styles: ["full_width", "bottom_tap_area_y"]
+          pad_all: 0
+          height: SIZE_CONTENT
+          bg_opa: TRANSP
+          layout:
+            type: FLEX
+            flex_flow: ROW
+            flex_align_main: SPACE_BETWEEN
+            flex_align_cross: CENTER
+          widgets:
+            - obj:
+                bg_opa: TRANSP
+                styles: bottom_tap_area_widget_size
+                on_press:
+                  then:
+                    - script.execute: previous_page
+            - obj:
+                bg_opa: TRANSP
+                styles: bottom_tap_area_widget_size
+                on_press:
+                  then:
+                    - script.execute: next_page
+      - obj:
+          id: left_tap_area
+          x: 0
+          styles: leftright_tap_area
+          bg_opa: TRANSP
+          pad_all: 0
+          on_press:
+            then:
+              - script.execute: previous_page
+      - obj:
+          id: right_tap_area
+          styles: ["leftright_tap_area", "right_tap_area_x"]
+          bg_opa: TRANSP
+          pad_all: 0
+          on_press:
+            then:
+              - script.execute: next_page
+
 script:
   - id: hide_page_control_elements
     then:

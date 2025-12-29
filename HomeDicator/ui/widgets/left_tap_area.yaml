@@ -1,9 +1,0 @@
-obj:
-  id: left_tap_area
-  x: 0
-  styles: leftright_tap_area
-  bg_opa: TRANSP
-  pad_all: 0
-  on_press:
-    then:
-      - script.execute: previous_page
