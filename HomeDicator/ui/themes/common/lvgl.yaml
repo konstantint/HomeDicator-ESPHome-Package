@@ -1,0 +1,4 @@
+lvgl:
+  disp_bg_color: 0x1b1b1b
+  top_layer:
+    scrollable: false

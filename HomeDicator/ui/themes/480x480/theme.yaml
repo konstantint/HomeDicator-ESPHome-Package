@@ -3,6 +3,7 @@ substitutions:
   screen_height: 480
 
 packages:
+  lvgl: !include ../common/lvgl.yaml
   fonts: !include ../common/fonts.yaml
 
 lvgl:
