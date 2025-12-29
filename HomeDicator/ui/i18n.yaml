@@ -25,7 +25,5 @@ select:
     on_value:
       then:
         - lambda: |-
-            if(esphome::i18n::global_i18n_component) {
-              esphome::i18n::global_i18n_component->set_current_locale(x);
-              i18n_helper.update_translations();
-            }
+            set_locale(x.c_str());
+            i18n_helper.update_translations();

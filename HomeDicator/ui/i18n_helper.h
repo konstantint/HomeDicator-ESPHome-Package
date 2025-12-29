@@ -6,12 +6,8 @@
 #include <vector>
 #include <sstream>
 
-// Access the global i18n pointer provided by ESPHome
-namespace esphome {
-namespace i18n {
-    extern I18nComponent *global_i18n_component;
-}
-}
+using esphome::i18n::tr;
+using esphome::i18n::set_locale;
 
 class I18nHelper {
 public:
@@ -50,7 +46,10 @@ public:
         // 1. If this is the first time we see this dropdown, read and store its keys
         if (this->registry_dropdown.find(obj) == this->registry_dropdown.end()) {
             const char *raw_opts = lv_dropdown_get_options(obj);
-            if (raw_opts == nullptr) return;
+            if (raw_opts == nullptr) {
+              ESP_LOGW("i18n_helper", "Failed to register dropdown - no options listed")
+              return;
+            }
 
             // Split the raw string "key1\nkey2" into a vector
             std::vector<std::string> keys;
@@ -94,14 +93,8 @@ public:
 
     // --- UPDATE ALL ---
     void update_translations() {
-        if (esphome::i18n::global_i18n_component == nullptr) {
-          ESP_LOGE("i18n_helper", "global_i18n_component is null");
-          return;
-        }
-
-        // Update Labels
         for (auto const &[obj, key] : this->registry_label) {
-            std::string new_text = esphome::i18n::global_i18n_component->translate(key.c_str());
+            std::string new_text = tr(key.c_str());
             lv_label_set_text(obj, new_text.c_str());
         }
 
@@ -114,14 +107,6 @@ public:
 
 // Global instance
 I18nHelper i18n_helper;
-
-// --- Global Helper Functions ---
-
-inline std::string tr(const char *key) {
-    if (key == nullptr) return "";
-    if (esphome::i18n::global_i18n_component == nullptr) return std::string(key);
-    return esphome::i18n::global_i18n_component->translate(key);
-}
 
 inline std::string tr_label(lv_obj_t *obj, const char *key) {
     return i18n_helper.translate_label(obj, key);
