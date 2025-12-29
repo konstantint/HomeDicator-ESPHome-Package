@@ -1,0 +1,39 @@
+switch:
+  - platform: lvgl
+    widget: lvgl_show_title_bar_switch
+    name: Show time & wifi status
+    id: show_title_bar_switch
+    entity_category: config
+    restore_mode: RESTORE_DEFAULT_ON
+    internal: true
+    on_turn_on:
+      - lvgl.widget.show: lvgl_current_time
+      - lvgl.widget.show: lvgl_wifi_signal_icon
+    on_turn_off:
+      - lvgl.widget.hide: lvgl_current_time
+      - lvgl.widget.hide: lvgl_wifi_signal_icon
+
+lvgl:
+  top_layer:
+    widgets:
+      # TIME AND WIFI STATUS
+      - label:
+          id: lvgl_current_time
+          pad_left: 15
+          pad_top: 15
+          align: TOP_LEFT
+          text_color: 0xFFFFFF
+          text_font: libreFranklin14
+          text_align: LEFT
+          text: "..."
+          # hidden: !lambda return !id(show_title_bar_switch).state;
+      - label:
+          id: lvgl_wifi_signal_icon
+          pad_right: 15
+          pad_top: 15
+          align: TOP_RIGHT
+          text_color: 0xFFFFFF
+          text_font: icons24
+          text_align: RIGHT
+          text: "\U000F092E"
+          # hidden: !lambda return !id(show_title_bar_switch).state;

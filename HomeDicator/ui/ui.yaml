@@ -9,6 +9,7 @@ packages:
   backlight: !include backlight.yaml
   auto_page_cycling: !include auto_page_cycling.yaml
   user_interface_debug_mode: !include user_interface_debug_mode.yaml
+  title_bar: !include title_bar.yaml
 
 lvgl:
   disp_bg_color: 0x1b1b1b
@@ -20,7 +21,3 @@ lvgl:
       - !include widgets/left_tap_area.yaml
       - !include widgets/right_tap_area.yaml
       - !include widgets/top_tap_area.yaml
-
-      # TIME AND WIFI STATUS
-      - !include widgets/time.yaml
-      - !include widgets/wifi.yaml

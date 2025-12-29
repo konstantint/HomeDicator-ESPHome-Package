@@ -233,6 +233,30 @@ lvgl:
                     flex_align_track: CENTER
                   widgets:
                     - label:
+                        id: lbl_show_title_bar
+                        text_color: 0xffffff
+                        text_font: libreFranklin18
+                        text: !lambda return tr_label(id(lbl_show_title_bar), "settings.show_title_bar");
+                    - switch:
+                        id: lvgl_show_title_bar_switch
+                        height: 40
+                        width: 85
+                        bg_color: 0xdddddd
+              - obj:
+                  styles: settings_item
+                  bg_color: 0x202020
+                  bg_opa: COVER
+                  pad_all: 0
+                  pad_left: 30
+                  pad_right: 30
+                  layout:
+                    type: FLEX
+                    flex_flow: ROW
+                    flex_align_main: SPACE_BETWEEN
+                    flex_align_cross: CENTER
+                    flex_align_track: CENTER
+                  widgets:
+                    - label:
                         id: lbl_auto_cycling_enabled
                         text_color: 0xffffff
                         text_font: libreFranklin18

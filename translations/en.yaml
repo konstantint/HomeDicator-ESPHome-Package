@@ -9,6 +9,7 @@ settings:
   use_24h_clock:  "Use 24-hour clock"
   auto_cycle_through_screens: "Auto-cycle through screens"
   language: "Language"
+  show_title_bar: "Show time & wifi status"
 
 back: "Back"
 waiting_for_home_assistant: "Waiting for Home Assistant..."

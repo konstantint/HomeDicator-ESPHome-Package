@@ -9,6 +9,7 @@ settings:
   use_24h_clock:  "24-часовой формат времени"
   auto_cycle_through_screens: "Авто-листать страницы"
   language: "Язык"
+  show_title_bar: "Показывать время и Wi-Fi"
 
 back: "Назад"
 waiting_for_home_assistant: "Подключение к Home Assistant..."
