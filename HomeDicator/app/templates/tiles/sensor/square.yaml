@@ -11,10 +11,7 @@ obj:
     - obj:
         bg_opa: COVER
         bg_color: ${color}
-        pad_all: 0
-        height: 52
-        width: 100
-        radius: 25
+        styles: info_or_button_tile_icon_container
         layout:
           type: FLEX
           flex_flow: COLUMN
