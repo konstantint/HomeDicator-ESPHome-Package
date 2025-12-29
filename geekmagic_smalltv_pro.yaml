@@ -1,0 +1,8 @@
+substitutions:
+  device_name: homedicator-smalltv-pro
+  device_friendly_name: "SmallTV Pro Dashboard"
+
+packages:
+  app: !include HomeDicator/app.yaml
+  hardware: !include HomeDicator/hardware/geekmagic_smalltv_pro.yaml
+  theme: !include HomeDicator/themes/240x240/theme.yaml

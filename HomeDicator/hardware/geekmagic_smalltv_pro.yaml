@@ -1,0 +1,72 @@
+packages:
+  wifi_signal: !include common/wifi_signal_sensor.yaml
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+logger:
+  # No hardware serial connected to USB,
+  # (unless using the internal programming header)
+  baud_rate: 0 
+
+output:
+  - platform: ledc
+    pin: GPIO25
+    inverted: True
+    id: backlight_pwm
+
+esp32_touch:
+
+binary_sensor:
+  - platform: esp32_touch
+    name: "Touch Button"
+    pin: GPIO32
+    threshold: 1250
+    on_press:
+      then:
+        - if:
+            condition: lvgl.is_paused
+            then:
+              # If screen is off, wake it up
+              - script.execute: activity_detected
+            else:
+              # Otherise, move to next page
+              - if:
+                  condition: # Don't switch if we are on the settings screen.
+                    lambda: return !id(page_controls_hidden);
+                  then:
+                    script.execute: next_page
+
+spi:
+  clk_pin: GPIO18
+  mosi_pin: GPIO23
+  interface: hardware
+  id: spihwd
+
+display:
+  - platform: ili9xxx
+    id: lcd_display
+    model: st7789v
+    spi_id: spihwd
+    # Original device uses 20mhz,
+    # 40 is default and works - does not work at 80mhz
+    data_rate: 40MHz
+    #cs_pin: GPIO03 #CS pin is connected to gnd I believe
+    dc_pin: GPIO02
+    reset_pin: GPIO04
+    # Since no cs pin default is mode0
+    spi_mode: MODE3
+    dimensions:
+      width: 240
+      height: 240
+      offset_height: 0
+      offset_width: 0
+    invert_colors: true
+    #update_interval: never
+    #auto_clear_enabled: false 
+
+image:
+  defaults:
+    type: rgb565

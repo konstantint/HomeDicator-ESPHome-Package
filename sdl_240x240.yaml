@@ -1,0 +1,11 @@
+substitutions:
+  device_name: "smalltv-pro"
+  device_friendly_name: "SmallTV Pro"
+
+packages:
+  app: !include HomeDicator/app.yaml
+  hardware: !include HomeDicator/hardware/sdl.yaml
+  theme: !include HomeDicator/themes/240x240/theme.yaml
+
+wifi: !remove
+ota: !remove
