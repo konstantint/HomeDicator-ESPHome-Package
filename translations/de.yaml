@@ -1,0 +1,14 @@
+settings:
+  settings: "Einstellungen"
+  display_brightness: "Bildschirmhelligkeit"
+  turn_off_screen_after: "Bildschirm ausschalten nach"
+  never: "Nie"
+  minute1: "1 Min" 
+  minute5: "5 Min" 
+  minute15: "15 Min" 
+  use_24h_clock:  "24-Stunden-Format"
+  auto_cycle_through_screens: "Seiten automatisch wechseln"
+  language: "Sprache"
+
+back: "Zurück"
+waiting_for_home_assistant: "Warten auf Home Assistant..."

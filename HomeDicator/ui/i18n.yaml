@@ -4,10 +4,28 @@ external_components:
       path: ${homedicator_package_dir}/i18n_component/components
     components: [i18n]
 
+esphome:
+  includes:
+    - ${homedicator_package_dir}/HomeDicator/ui/i18n_helper.h
+
 i18n:
-  id: translate
   sources:
+    - ${homedicator_package_dir}/translations/de.yaml
     - ${homedicator_package_dir}/translations/en.yaml
     - ${homedicator_package_dir}/translations/ru.yaml
-  # Default locale (optional, default: "en")
-  default_locale: en
+
+select:
+  - platform: lvgl
+    widget: lvgl_language_dropdown
+    name: Language
+    id: language_selector
+    entity_category: config
+    internal: true
+    restore_value: true
+    on_value:
+      then:
+        - lambda: |-
+            if(esphome::i18n::global_i18n_component) {
+              esphome::i18n::global_i18n_component->set_current_locale(x);
+              i18n_helper.update_translations();
+            }

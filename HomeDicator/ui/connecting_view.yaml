@@ -59,7 +59,8 @@ lvgl:
                       pad_row: 0
                 widgets:
                       - label:
+                            id: lbl_connecting
                             pad_bottom: 20
                             text_font: libreFranklin18
                             text_color: 0xa6a6a6
-                            text: !lambda return id(translate).translate("waiting_for_home_assistant");
+                            text: !lambda return tr_label(id(lbl_connecting), "waiting_for_home_assistant");

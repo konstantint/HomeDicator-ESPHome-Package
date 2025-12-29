@@ -4,10 +4,11 @@ settings:
   turn_off_screen_after: "Turn off screen after"
   never: "Never"
   minute1: "1 min" 
-  minute5: "10 min" 
+  minute5: "5 min" 
   minute15: "15 min" 
   use_24h_clock:  "Use 24-hour clock"
   auto_cycle_through_screens: "Auto-cycle through screens"
+  language: "Language"
 
 back: "Back"
 waiting_for_home_assistant: "Waiting for Home Assistant..."

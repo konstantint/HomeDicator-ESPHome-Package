@@ -6,4 +6,4 @@ label:
     text_color: 0xFFFFFF
     text_font: libreFranklin14
     text_align: LEFT
-    text: "Syncing..."
+    text: "..."

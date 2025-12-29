@@ -73,7 +73,7 @@ lvgl:
     - id: settings_display_brightness_slider
       height: 32
       width: 450
-    - id: settings_display_backlight_dropdown
+    - id: settings_dropdown
       height: 60
       width: 150
       radius: 10

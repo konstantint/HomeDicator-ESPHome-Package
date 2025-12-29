@@ -1,0 +1,9 @@
+label:
+  id: lbl_${page_id}
+  styles: ["full_width", "page_title_y"]
+  pad_all: 0
+  height: SIZE_CONTENT
+  text_color: 0xFFFFFF
+  text_font: libreFranklin24
+  text_align: CENTER
+  text: !lambda return tr_label(id(lbl_${page_id}), "${title_key}");

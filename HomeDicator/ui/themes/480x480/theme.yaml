@@ -62,7 +62,7 @@ lvgl:
       height: 130
     - id: settings_display_brightness_slider
       height: 25
-    - id: settings_display_backlight_dropdown
+    - id: settings_dropdown
       height: 40
       width: 110
     - id: settings_item_internal_width

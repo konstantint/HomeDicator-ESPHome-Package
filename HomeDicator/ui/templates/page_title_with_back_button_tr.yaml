@@ -1,0 +1,59 @@
+obj:
+  bg_opa: TRANSP
+  styles: ["page_title_y", "full_width"]
+  height: SIZE_CONTENT
+  pad_all: 0
+  border_color: red
+  widgets:
+    - label:
+        id: lbl_${page_id}
+        styles: full_width
+        pad_all: 0
+        height: SIZE_CONTENT
+        text_color: 0xFFFFFF
+        text_font: libreFranklin24
+        text_align: CENTER
+        text: !lambda return tr_label(id(lbl_${page_id}), "${title_key}");
+    - button:
+        styles: back_button
+        bg_opa: TRANSP
+        border_width: 0
+        shadow_width: 0
+        width: SIZE_CONTENT
+        pad_all: 0
+        on_click:
+          then:
+            - script.execute: show_page_control_elements
+            - lvgl.page.show:
+                id: ${previous_page_id}
+                animation: OUT_TOP
+                time: ${page_transition_time}
+            - globals.set:
+                id: current_page
+                value: ${previous_page_index}
+            - script.execute: update_pager_dots
+        widgets:
+          - obj:
+              bg_opa: TRANSP
+              width: SIZE_CONTENT
+              height: SIZE_CONTENT
+              pad_all: 0
+              clickable: false
+              layout:
+                type: FLEX
+                flex_flow: ROW
+                flex_align_cross: CENTER
+                pad_column: -5
+              widgets:
+                - label:
+                    pad_all: 0
+                    text_color: 0xffffff
+                    text_font: ui_light_icons
+                    text: "\U0000F141"
+                - label:
+                    id: lbl_back_${page_id}
+                    pad_top: 1
+                    pad_all: 0
+                    text_color: 0xffffff
+                    text_font: libreFranklin18
+                    text: !lambda return tr_label(id(lbl_back_${page_id}), "back");
