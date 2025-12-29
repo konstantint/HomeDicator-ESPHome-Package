@@ -11,7 +11,7 @@ esphome:
         # Using ESPhome packages will cause the settings page to be the first one, lvgl.page.next will make it look like the last one again.
         - lvgl.page.next:
             animation: NONE
-    - priority: 100
+    - priority: 600 # This must execute together with lvgl initialization
       then:
         # Apply i18n to the dropdown.
         - lambda: tr_select(id(lvgl_display_backlight_timeout));
