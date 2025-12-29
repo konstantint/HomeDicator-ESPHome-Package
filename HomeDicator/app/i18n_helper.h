@@ -47,7 +47,7 @@ public:
         if (this->registry_dropdown.find(obj) == this->registry_dropdown.end()) {
             const char *raw_opts = lv_dropdown_get_options(obj);
             if (raw_opts == nullptr) {
-              ESP_LOGW("i18n_helper", "Failed to register dropdown - no options listed")
+              ESP_LOGW("i18n_helper", "Failed to register dropdown - no options listed");
               return;
             }
 

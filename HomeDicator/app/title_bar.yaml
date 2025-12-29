@@ -13,10 +13,16 @@ switch:
       - lvgl.widget.hide: lvgl_current_time
       - lvgl.widget.hide: lvgl_wifi_signal_icon
 
+# NB: the "connected" icon is set in hardware/common/wifi_signal_sensor.yaml
+wifi:
+  on_disconnect:
+      - lvgl.label.update:
+          id: lvgl_wifi_signal_icon
+          text: "\U000F092E"
+
 lvgl:
   top_layer:
     widgets:
-      # TIME AND WIFI STATUS
       - label:
           id: lvgl_current_time
           pad_left: 15
@@ -26,7 +32,6 @@ lvgl:
           text_font: libreFranklin14
           text_align: LEFT
           text: "..."
-          # hidden: !lambda return !id(show_title_bar_switch).state;
       - label:
           id: lvgl_wifi_signal_icon
           pad_right: 15
@@ -36,4 +41,3 @@ lvgl:
           text_font: icons24
           text_align: RIGHT
           text: "\U000F092E"
-          # hidden: !lambda return !id(show_title_bar_switch).state;

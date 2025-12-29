@@ -1,0 +1,92 @@
+# Sample page
+substitutions:
+  thermometer_weather_condition_icon_sensor: sensor.weather_condition_icon
+  thermometer_temperature_sensor: sensor.outside_temperature
+
+sensor:
+  - platform: homeassistant
+    id: thermo_outdoor_temperature
+    entity_id: ${thermometer_temperature_sensor}
+    internal: true
+    on_value:
+      - lvgl.indicator.update:
+          id: temperature_needle
+          value: !lambda return x * 10;
+      - lvgl.label.update:
+          id: lbl_temperature_text
+          text:
+            format: "%.1f°"
+            args: [ 'x' ]
+
+text_sensor:
+  # Weather Icon
+  - platform: homeassistant
+    id: thermo_weather_icon
+    entity_id: ${thermometer_weather_condition_icon_sensor}
+    internal: true
+    on_value:
+      - lvgl.label.update:
+          id: lbl_weather_condition
+          text: !lambda return x;
+
+lvgl:
+    pages:
+      # From https://esphome.io/cookbook/lvgl/#thermometer
+      - id: thermometer_page
+        bg_opa: TRANSP
+        widgets:
+          - meter:
+              align: CENTER
+              height: 300
+              width: 300
+              bg_color: 0xeeeeee
+              scales:
+                - range_from: -100 # scale for the needle value
+                  range_to: 400
+                  angle_range: 240
+                  rotation: 150
+                  indicators:
+                    - line:
+                        id: temperature_needle
+                        width: 3
+                        color: 0xFF0000
+                        r_mod: -4
+                    - tick_style:
+                        start_value: -10
+                        end_value: 40
+                        color_start: 0x0000bd
+                        color_end: 0xbd0000
+                        width: 3
+                - range_from: -10 # scale for the value labels
+                  range_to: 40
+                  angle_range: 240
+                  rotation: 150
+                  ticks:
+                    width: 1
+                    count: 51
+                    length: 10
+                    major:
+                      stride: 5
+                      width: 2
+                      length: 10
+                      color: 0x404040
+                      label_gap: 15
+              ticks:
+                text_font: libreFranklin18
+                text_color: 0x111111
+              widgets:
+                - label:
+                    id: lbl_weather_condition
+                    text: "\U000F0595" # mdi:weather-partly-cloudy
+                    text_color: 0x111111
+                    align: CENTER
+                    y: -50
+                    text_font: icons50
+                - label:
+                    id: lbl_temperature_text
+                    text: "-.-°"
+                    align: CENTER
+                    text_font: libreFranklin50
+                    text_color: 0x111111
+                    y: 80
+                    x: 10  # Offset slightly because of the degree sign.

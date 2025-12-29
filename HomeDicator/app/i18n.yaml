@@ -6,13 +6,13 @@ external_components:
 
 esphome:
   includes:
-    - ${homedicator_package_dir}/HomeDicator/ui/i18n_helper.h
+    - ${homedicator_package_dir}/HomeDicator/app/i18n_helper.h
 
 i18n:
   sources:
-    - ${homedicator_package_dir}/translations/de.yaml
-    - ${homedicator_package_dir}/translations/en.yaml
-    - ${homedicator_package_dir}/translations/ru.yaml
+    - ${homedicator_package_dir}/HomeDicator/translations/de.yaml
+    - ${homedicator_package_dir}/HomeDicator/translations/en.yaml
+    - ${homedicator_package_dir}/HomeDicator/translations/ru.yaml
 
 select:
   - platform: lvgl

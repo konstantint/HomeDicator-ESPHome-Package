@@ -1,0 +1,12 @@
+# Basic example, combining (app+hardware+theme)+page
+substitutions:
+  total_pages: 1
+  cycleable_pages: 1 
+  first_page_id: thermometer_page
+  thermometer_weather_condition_icon_sensor: sensor.weather_condition_icon
+  thermometer_temperature_sensor: sensor.outside_temperature
+  homedicator_package_dir: "./"  # NB: Must be relative to the root yaml file (i.e. this file).
+
+packages:
+  app: !include sdl_480x480.yaml
+  thermometer_page: !include HomeDicator/pages/thermometer.yaml

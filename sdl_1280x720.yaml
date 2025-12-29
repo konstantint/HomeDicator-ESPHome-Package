@@ -1,4 +1,11 @@
+substitutions:
+  device_name: homedicator-tab5-dev
+  device_friendly_name: "M5Stack Tab5 Dashboard (Dev)"
+
 packages:
-  core: !include HomeDicator/core.yaml
+  app: !include HomeDicator/app.yaml
   hardware: !include HomeDicator/hardware/sdl.yaml
-  theme: !include HomeDicator/ui/themes/1280x720/theme.yaml
+  theme: !include HomeDicator/themes/1280x720/theme.yaml
+
+wifi: !remove
+ota: !remove

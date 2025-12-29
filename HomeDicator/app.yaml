@@ -1,0 +1,43 @@
+substitutions:
+  homedicator_package_dir: "HomeDicator-ESPHome-Package"  # Must be relative to root yaml file's locaiton.
+  api_key: !secret api_key
+  wifi_ssid: !secret wifi_ssid
+  wifi_password: !secret wifi_password
+
+esphome:
+  name: ${device_name}
+  friendly_name: ${device_friendly_name}
+  project:
+    name: paulvincentroll.HomeDicator
+    version: konstantint edition
+  platformio_options:
+    build_unflags: -Werror=all
+
+wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
+  on_disconnect:
+      - lvgl.label.update:
+          id: lvgl_wifi_signal_icon
+          text: "\U000F092E"
+
+logger:
+  level: INFO
+
+api:
+  encryption:
+    key: ${api_key}
+
+packages:
+  # Include all UI components in the right order
+  i18n: !include app/i18n.yaml
+  gradients: !include app/gradients.yaml
+  navigation: !include app/navigation.yaml
+  pager_dots: !include app/bottom_pager_dots.yaml
+  settings_page: !include app/settings_page.yaml
+  time: !include app/time.yaml
+  backlight: !include app/backlight.yaml
+  auto_page_cycling: !include app/auto_page_cycling.yaml
+  user_interface_debug_mode: !include app/user_interface_debug_mode.yaml
+  connecting_view: !include app/connecting_view.yaml
+  title_bar: !include app/title_bar.yaml

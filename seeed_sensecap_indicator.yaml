@@ -1,4 +1,8 @@
+substitutions:
+  device_name: "sensecap-indicator"
+  device_friendly_name: "SenseCAP Dashboard"
+
 packages:
-  core: !include HomeDicator/core.yaml
+  app: !include HomeDicator/app.yaml
   hardware:  !include HomeDicator/hardware/seeed_sensecap_indicator.yaml
-  dimensions: !include HomeDicator/ui/themes/480x480/theme.yaml
+  theme: !include HomeDicator/themes/480x480/theme.yaml

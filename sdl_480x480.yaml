@@ -1,4 +1,11 @@
+substitutions:
+  device_name: "sensecap-indicator-dev"
+  device_friendly_name: "SenseCAP Dashboard (Dev)"
+
 packages:
-  core: !include HomeDicator/core.yaml
+  app: !include HomeDicator/app.yaml
   hardware: !include HomeDicator/hardware/sdl.yaml
-  theme: !include HomeDicator/ui/themes/480x480/theme.yaml
+  theme: !include HomeDicator/themes/480x480/theme.yaml
+
+wifi: !remove
+ota: !remove

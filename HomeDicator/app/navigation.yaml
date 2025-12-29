@@ -1,5 +1,5 @@
 substitutions:
-  first_page_id: first_page
+  first_page_id: settings  # Replace this with actual first page.
   page_transition_time: 150ms # How long to animate the transition between pages.
 
 globals:
