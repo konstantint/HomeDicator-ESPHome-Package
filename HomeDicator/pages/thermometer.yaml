@@ -37,9 +37,10 @@ lvgl:
         widgets:
           - meter:
               align: CENTER
-              height: 300
-              width: 300
+              height: !lambda return ${screen_height}*300/480;
+              width: !lambda return ${screen_height}*300/480;
               bg_color: 0xeeeeee
+              pad_all: !lambda return 10*${screen_height}/480;
               scales:
                 - range_from: -100 # scale for the needle value
                   range_to: 400
@@ -50,13 +51,13 @@ lvgl:
                         id: temperature_needle
                         width: 3
                         color: 0xFF0000
-                        r_mod: -4
+                        r_mod: !lambda return -4*${screen_height}/480;
                     - tick_style:
                         start_value: -10
                         end_value: 40
                         color_start: 0x0000bd
                         color_end: 0xbd0000
-                        width: 3
+                        width: !lambda return 3*${screen_height}/480;
                 - range_from: -10 # scale for the value labels
                   range_to: 40
                   angle_range: 240
@@ -64,13 +65,13 @@ lvgl:
                   ticks:
                     width: 1
                     count: 51
-                    length: 10
+                    length: !lambda return 10*${screen_height}/480;
                     major:
                       stride: 5
-                      width: 2
-                      length: 10
+                      width: !lambda return 2*${screen_height}/480;
+                      length: !lambda return 10*${screen_height}/480;
                       color: 0x404040
-                      label_gap: 15
+                      label_gap: !lambda return 10*${screen_height}/480 + 5;
               ticks:
                 text_font: libreFranklin18
                 text_color: 0x111111
@@ -80,7 +81,7 @@ lvgl:
                     text: "\U000F0595" # mdi:weather-partly-cloudy
                     text_color: 0x111111
                     align: CENTER
-                    y: -50
+                    y: !lambda return -50*${screen_height}/480;
                     text_font: icons50
                 - label:
                     id: lbl_temperature_text
@@ -88,5 +89,6 @@ lvgl:
                     align: CENTER
                     text_font: libreFranklin50
                     text_color: 0x111111
-                    y: 80
-                    x: 10  # Offset slightly because of the degree sign.
+                    y: !lambda return 80*${screen_height}/480;
+                    x: !lambda return 10*${screen_height}/480;
+                  
