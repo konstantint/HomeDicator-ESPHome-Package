@@ -24,12 +24,7 @@ lvgl:
       bg_opa: COVER
       widgets:
         - !include
-            file: templates/page_title_with_back_button_tr.yaml
-            vars:
-              page_id: settings
-              title_key: settings.settings
-              previous_page_id: ${first_page_id}
-              previous_page_index: "0"
+            file: templates/settings_page_title_tr.yaml
         - obj:
             styles: content_container
             pad_left: 0

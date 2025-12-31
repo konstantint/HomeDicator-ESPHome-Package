@@ -68,3 +68,10 @@ script:
           - lvgl.widget.redraw:
           - delay: 200ms
           - light.turn_on: display_backlight
+        else:
+          if:
+            # Light can be turned off for any other reason (e.g. external automation)
+            condition:
+              light.is_off: display_backlight
+            then:
+              - light.turn_on: display_backlight

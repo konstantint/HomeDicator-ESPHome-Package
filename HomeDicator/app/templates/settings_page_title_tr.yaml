@@ -1,0 +1,51 @@
+obj:
+  bg_opa: TRANSP
+  styles: ["page_title_y", "full_width"]
+  height: SIZE_CONTENT
+  pad_all: 0
+  border_color: red
+  widgets:
+    - label:
+        id: lbl_settings
+        styles: full_width
+        pad_all: 0
+        height: SIZE_CONTENT
+        text_color: 0xFFFFFF
+        text_font: libreFranklin24
+        text_align: CENTER
+        text: !lambda return tr_label(id(lbl_settings), "settings.settings");
+    - button:
+        styles: back_button
+        bg_opa: TRANSP
+        border_width: 0
+        shadow_width: 0
+        width: SIZE_CONTENT
+        pad_all: 0
+        on_click:
+          then:
+            - script.execute: close_settings
+        widgets:
+          - obj:
+              bg_opa: TRANSP
+              width: SIZE_CONTENT
+              height: SIZE_CONTENT
+              pad_all: 0
+              clickable: false
+              layout:
+                type: FLEX
+                flex_flow: ROW
+                flex_align_cross: CENTER
+                pad_column: -5
+              widgets:
+                - label:
+                    pad_all: 0
+                    text_color: 0xffffff
+                    text_font: ui_light_icons
+                    text: "\U0000F141"
+                - label:
+                    id: lbl_back_settings
+                    pad_top: 1
+                    pad_all: 0
+                    text_color: 0xffffff
+                    text_font: libreFranklin18
+                    text: !lambda return tr_label(id(lbl_back_settings), "back");

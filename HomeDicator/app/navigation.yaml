@@ -72,6 +72,20 @@ lvgl:
               - script.execute: next_page
 
 script:
+  # Currently we don't track the id of the page that was shown before going to settings,
+  # so we return to the first page.
+  - id: close_settings
+    then:
+      - script.execute: show_page_control_elements
+      - lvgl.page.show:
+          id: ${first_page_id}
+          animation: OUT_TOP
+          time: ${page_transition_time}
+      - globals.set:
+          id: current_page
+          value: "0"
+      - script.execute: update_pager_dots
+
   - id: hide_page_control_elements
     then:
       - lvgl.widget.hide: top_tap_area

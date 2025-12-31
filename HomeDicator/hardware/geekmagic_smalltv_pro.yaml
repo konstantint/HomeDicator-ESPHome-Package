@@ -32,12 +32,14 @@ binary_sensor:
               # If screen is off, wake it up
               - script.execute: activity_detected
             else:
-              # Otherise, move to next page
+              # Otherise close settings or move to next scren
               - if:
-                  condition: # Don't switch if we are on the settings screen.
-                    lambda: return !id(page_controls_hidden);
+                  condition:
+                    lambda: return id(page_controls_hidden);
                   then:
-                    script.execute: next_page
+                    - script.execute: close_settings
+                  else:
+                    - script.execute: next_page
 
 spi:
   clk_pin: GPIO18
