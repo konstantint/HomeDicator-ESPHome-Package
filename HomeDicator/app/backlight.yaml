@@ -5,7 +5,16 @@ select:
     id: turn_off_screen_after_selector
     entity_category: config
     restore_value: true
-    internal: true
+    # Expose to HA to be able to control backlight timeout.
+    internal: false
+
+# Allow triggering an activity from HA
+button:
+  - platform: template
+    name: "Trigger activity"
+    id: trigger_activity_button
+    on_press:
+      - script.execute: activity_detected
 
 light:
   - platform: monochromatic
