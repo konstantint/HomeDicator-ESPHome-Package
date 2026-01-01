@@ -283,15 +283,20 @@ font:
       "\U000F171A", # mdi:robot-happy-outline
       "\U000F0E7D", # mdi:baby-face-outline
       "\U000F0E7C", # mdi:baby-face
+      "\U000F1055", # mdi:palm-tree
+      "\U000F0E66", # mdi:sprout
     ]
 
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: icons18
     size: ${size18}
     bpp: 1
-    glyphs:
-      - "\U000F050F" # mdi:thermometer
-      - "\U000F058E" # mdi:water-percent
+    glyphs: [
+      "\U000F050F", # mdi:thermometer
+      "\U000F058E", # mdi:water-percent
+      "\U000F1055", # mdi:palm-tree
+      "\U000F0E66", # mdi:sprout
+    ]
 
   - file: "${homedicator_package_dir}/HomeDicator/assets/materialdesignicons-webfont.ttf"
     id: icons50
