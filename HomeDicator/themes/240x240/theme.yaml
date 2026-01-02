@@ -117,6 +117,14 @@ lvgl:
     - id: floorplan_value_large
       text_color: 0xffffff
       text_font: libreFranklin18
+
+    - id: time_icon_large
+      text_color: 0xffffff
+      text_font: icons50
+    
+    - id: time_value_large
+      text_color: 0xffffff
+      text_font: libreFranklin50
  
     # Info tiles
     - id: info_or_button_tile
