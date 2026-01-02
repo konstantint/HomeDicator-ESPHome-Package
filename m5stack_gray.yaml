@@ -1,0 +1,11 @@
+substitutions:
+  device_name: homedicator-m5gray
+  device_friendly_name: "M5Stack Gray Dashboard"
+
+packages:
+  app: !include HomeDicator/app.yaml
+  hardware: !include HomeDicator/hardware/m5stack_gray.yaml
+  theme: !include HomeDicator/themes/320x240/theme.yaml
+
+  
+

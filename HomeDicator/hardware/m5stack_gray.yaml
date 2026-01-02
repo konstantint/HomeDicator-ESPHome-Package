@@ -1,0 +1,167 @@
+# Hardware definitions for M5Stack Gray
+packages:
+  wifi_signal: !include common/wifi_signal_sensor.yaml
+
+esphome:
+  platformio_options:
+    build_flags:
+      - -DCORE_DEBUG_LEVEL=0
+
+esp32:
+  board: m5stack-core-esp32
+  framework:
+    # type: esp-idf
+    type: arduino  # Doesn't work with esp-idf somewhy
+
+
+# PSRAM is available on M5Stack Gray (usually 4MB)
+psram:
+  mode: quad
+  speed: 40MHz
+
+logger:
+  # M5Stack Gray uses standard UART0 on USB
+  hardware_uart: UART0
+
+# ---------------------------------------------------------
+# Buses
+# ---------------------------------------------------------
+i2c:
+  # Internal bus for IMU (MPU6886/9250), IP5306 Power, etc.
+  - id: bus_internal
+    sda: GPIO21
+    scl: GPIO22
+    scan: true
+
+spi:
+  # Shared SPI Bus for LCD and TF Card
+  clk_pin: GPIO18
+  mosi_pin: GPIO23
+  miso_pin: GPIO19
+
+# ---------------------------------------------------------
+# Display (ILI9341)
+# ---------------------------------------------------------
+output:
+  - platform: ledc
+    pin: GPIO32
+    id: backlight_pwm
+    frequency: 1000Hz
+
+display:
+  - platform: ili9xxx
+    invert_colors: true
+    id: lcd
+    model: M5Stack
+    cs_pin: GPIO14
+    dc_pin: GPIO27
+    reset_pin: GPIO33
+    # M5Stack Gray resolution
+    dimensions:
+      width: 320
+      height: 240
+    rotation: 0
+    
+    # Map the LVGL buffer to this display
+    # on_page_change:
+    #   - component.update: lcd
+
+# ---------------------------------------------------------
+# Input: Physical Buttons (Replaces Touchscreen)
+# ---------------------------------------------------------
+binary_sensor:
+  - platform: gpio
+    id: button_a
+    name: "Button A"
+    pin:
+      number: GPIO39
+      inverted: true
+    filters:
+      - delayed_on: 10ms
+    # on_press:
+    #   - lvgl.send_key:
+    #       key: PREV
+    #       input: lvgl_keypad
+
+  - platform: gpio
+    id: button_b
+    name: "Button B"
+    pin:
+      number: GPIO38
+      inverted: true
+    filters:
+      - delayed_on: 10ms
+    # on_press:
+    #   - lvgl.send_key:
+    #       key: ENTER
+    #       input: lvgl_keypad
+
+  - platform: gpio
+    id: button_c
+    name: "Button C"
+    pin:
+      number: GPIO37
+      inverted: true
+    filters:
+      - delayed_on: 10ms
+    on_press:
+      then:
+        # If screen is off, wake it up
+        - if:
+            condition:
+              light.is_off: display_backlight
+            then:
+              - script.execute: activity_detected
+            else:
+              # Otherise close settings or move to next scren
+              - if:
+                  condition:
+                    lambda: return id(page_controls_hidden);
+                  then:
+                    - script.execute: close_settings
+                  else:
+                    - script.execute: next_page
+    # on_press:
+    #   - lvgl.send_key:
+    #       key: NEXT
+    #       input: lvgl_keypad
+
+# ---------------------------------------------------------
+# Audio (Speaker only, no Mic)
+# ---------------------------------------------------------
+# The Gray uses the internal DAC on GPIO25 for the speaker
+# speaker:
+#   - platform: i2s_audio
+#     id: internal_speaker
+#     dac_type: internal_dac
+#     mode: mono
+#     i2s_dout_pin: GPIO25
+
+# ---------------------------------------------------------
+# LVGL Configuration
+# ---------------------------------------------------------
+# lvgl:
+  # Map display
+  # displays:
+  #   - id: lcd
+  #     # Use full color buffer
+  #     buffer_size: 50% 
+
+  # Since there is no touch, we define a keypad input group
+  # mapped to the physical buttons above.
+  # groups:
+  #   - id: lvgl_keypad
+  #     # Your widgets need to be added to this group in your lambda/yaml 
+  #     # to be navigable (e.g., `lvgl.group.add_obj(my_button);`)
+  #     default: true
+
+image:
+  defaults:
+    type: rgb565
+
+# ---------------------------------------------------------
+# SD Card
+# ---------------------------------------------------------
+# sdcard:
+#   # Uses the shared SPI bus defined above
+#   cs_pin: GPIO4
