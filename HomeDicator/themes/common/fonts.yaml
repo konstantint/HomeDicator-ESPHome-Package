@@ -320,6 +320,7 @@ font:
       "\U000F059D", # mdi:weather-windy
       "\U000F059E", # mdi:weather-windy-variant
       "\U000F1904", # mdi:home-lightning-bolt-outline
+      "\U000F1356", # mdi:television-ambient-light
     ]
 
   # ----------------------
