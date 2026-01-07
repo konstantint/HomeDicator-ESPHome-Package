@@ -10,14 +10,14 @@ esphome:
 esp32:
   board: m5stack-core-esp32
   framework:
-    # type: esp-idf
-    type: arduino  # Doesn't work with esp-idf somewhy
+    # Unfortunately M5Stack Gray doesn't seem to work well with the esp-idf framework.
+    # When the same config is used with esp-idf, the SPI integration fails to initialize.
+    # Presumably the reason is that ESP-IDF fails to perform DMA transfers from PSRAM to SPI,
+    # while the Arduino implementation uses an intermediate buffer for that.
+    # Note that it *is* possible to run the config with esp-idf if spi.interface is set to
+    # "software", this however makes frame updates extremely slow.
+    type: arduino
 
-
-# PSRAM is available on M5Stack Gray (usually 4MB)
-psram:
-  mode: quad
-  speed: 40MHz
 
 logger:
   # M5Stack Gray uses standard UART0 on USB
@@ -38,6 +38,9 @@ spi:
   clk_pin: GPIO18
   mosi_pin: GPIO23
   miso_pin: GPIO19
+  # This is necessary for the config to work with ESP-IDF,
+  # however this makes everything very slow.
+  # interface: software
 
 # ---------------------------------------------------------
 # Display (ILI9341)
@@ -56,15 +59,10 @@ display:
     cs_pin: GPIO14
     dc_pin: GPIO27
     reset_pin: GPIO33
-    # M5Stack Gray resolution
     dimensions:
       width: 320
       height: 240
     rotation: 0
-    
-    # Map the LVGL buffer to this display
-    # on_page_change:
-    #   - component.update: lcd
 
 # ---------------------------------------------------------
 # Input: Physical Buttons (Replaces Touchscreen)
@@ -78,10 +76,23 @@ binary_sensor:
       inverted: true
     filters:
       - delayed_on: 10ms
-    # on_press:
-    #   - lvgl.send_key:
-    #       key: PREV
-    #       input: lvgl_keypad
+    on_press:
+      then:
+        # If screen is off, wake it up
+        - if:
+            condition:
+              light.is_off: display_backlight
+            then:
+              - script.execute: activity_detected
+            else:
+              # Otherise close settings or move to next scren
+              - if:
+                  condition:
+                    lambda: return id(page_controls_hidden);
+                  then:
+                    - script.execute: close_settings
+                  else:
+                    - script.execute: previous_page
 
   - platform: gpio
     id: button_b
