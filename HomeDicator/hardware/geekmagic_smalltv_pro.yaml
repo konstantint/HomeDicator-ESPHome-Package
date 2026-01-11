@@ -4,7 +4,12 @@ packages:
 esp32:
   board: esp32dev
   framework:
-    type: arduino
+    type: esp-idf
+
+esphome:
+  platformio_options:
+    build_flags:
+      - -DGEEKMAGIC_SMALLTV_PRO
 
 logger:
   # No hardware serial connected to USB,
