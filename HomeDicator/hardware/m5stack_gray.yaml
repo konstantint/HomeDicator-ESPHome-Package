@@ -31,7 +31,7 @@ i2c:
   - id: bus_internal
     sda: GPIO21
     scl: GPIO22
-    scan: true
+    scan: false  # Boot faster
 
 spi:
   # Shared SPI Bus for LCD and TF Card
